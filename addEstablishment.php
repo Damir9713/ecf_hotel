@@ -1,4 +1,6 @@
 <?php
+session_start();
+require('action/securityAdmin.php');
 require('action/establishment/addEstablishmentAction.php')
 ?>
 <!DOCTYPE html>
@@ -37,13 +39,14 @@ require('action/establishment/addEstablishmentAction.php')
             
             <div class="mb-3">
               <input type="file" name="images">
-               <input type="submit" name="valider" value="charger">
+              
             </div>
       
-
+            <button type="submit" class="btn btn-outline-warning" name="valider">Ajouter un établissement</button>
+            </div>
     </form>
 
-</div>
+
 
 
 

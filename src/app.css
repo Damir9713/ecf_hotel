@@ -7,17 +7,19 @@
 h1 {
   font-family: "Montserrat", sans-serif;
   text-decoration: underline;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 body {
   font-family: "Josefin Sans", sans-serif;
   min-height: 100vh;
 }
-.image {
+/* .image {
   width: 100%;
   height: 15vw;
   object-fit: cover;
-}
+} */
 
 .container-fluid {
   height: 100%;
@@ -35,7 +37,7 @@ footer a {
   margin: 0 15px;
 }
 
-@media screen and (max-width: 1014px) {
+/* @media screen and (max-width: 1014px) {
   .image {
     height: 15vw;
   }
@@ -51,4 +53,4 @@ footer a {
   .image {
     height: 100%;
   }
-}
+} */

@@ -23,12 +23,13 @@ if(isset($_POST['valider'])){
 
     move_uploaded_file($_FILES['images']['tmp_name'], $upload);
 
-    $insertImage = $bdd->prepare('INSERT INTO establishment(name, 
-    city, 
-    adress, 
-    description, 
-    photo
-    ) VALUES(?, ?, ?, ?, ?)');
+    $insertImage = $bdd->prepare('UPDATE establishment 
+    SET name = ?, 
+    city = ?, 
+    adress = ?, 
+    description = ?, 
+    photo = ?  
+    WHERE id = ?');
 
 $insertImage->execute(
     array(
@@ -36,8 +37,8 @@ $insertImage->execute(
      $city,
      $adress,
      $description,
-     $photo
-    
+     $photo,
+     $idOfEstablishment
     )
 );
 $sucessMsg = "Votre établissement a bien été ajoutée ";
