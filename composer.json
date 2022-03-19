@@ -1,0 +1,15 @@
+{
+    "name": "xboxg/ecf_hotel",
+    "autoload": {
+        "psr-4": {
+            "Xboxg\\EcfHotel\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Damir",
+            "email": "damir12850@hotmail.fr"
+        }
+    ],
+    "require": {}
+}
