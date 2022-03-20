@@ -40,16 +40,25 @@ require('action/establishment/showEstablishment.php')
 <?php while($establishment = $getEstablishmentInfo->fetch()){
   ?>
  
-<div class="col-lg-4">
+<div class="col-lg-4 mb-3">
 
-<div class="card mx-auto mb-3" style="width: 18rem;">
- <img src="upload/<?php echo $establishment['photo'] ?>" width="400" height="150" class="card-img-top" alt="...">
+
+
+
+<div class="card mx-auto h-100 " >
+ <img src="upload/<?php echo $establishment['photo'] ?>"  class="card-img-top" alt="...">
  <div class="card-body">
  <h5 class="card-title"><?php echo $establishment["name"] ?></h5>
    <p class="card-text"><?php echo $establishment["description"] ?>.</p>
  </div>
 </div>
 </div>
+
+
+<!-- style="width: 18rem;" -->
+
+<!-- width="400" height="150" -->
+
 
 <?php
 }

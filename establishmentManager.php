@@ -30,21 +30,21 @@ require('action/suite/showManagerEstablishment.php')
 <div class="container-fluid">
 
 
-
-
-
-
 <?php while($manager = $getManagerInfo->fetch()){
   ?>
  
- 
-<div class="card mx-auto mb-3">
-  <img src="upload/<?php echo $manager['photo'] ?>"  height="250" class="card-img-top" alt="...">
+ <div class="col-lg-4 mb-3">
+
+ <div class="card mx-auto ">
+  <img src="upload/<?php echo $manager['photo'] ?>"   class="card-img-top" alt="...">
   <div class="card-body">
   <h5 class="card-title"><?php echo $manager["name"] ?></h5>
     <p class="card-text"><?php echo $manager["description"] ?>.</p>
   </div>
 </div>
+
+ </div>
+
    
 <?php
 }

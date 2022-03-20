@@ -21,7 +21,6 @@ require('action/suite/showSuite.php')
 <div class="row">
 <div class="col ms-5">
         <a href="addSuite.php"class="btn btn-outline-warning">Ajouter une suite</a>
-        <a href="addImageSuite.php"class="btn btn-outline-warning">photos</a>
         </div>
 </div>
 
@@ -30,24 +29,37 @@ require('action/suite/showSuite.php')
 
 <br><br>
 
-<div class="container">
+
+<div class="container-fluid ">
   
-
-
-
-
+<div class="row ">
 
 
   <?php while($suite = $getSuiteInfo->fetch()){
   ?>
 
+<div class="col-lg-4  mb-5">
 
-
-<div class="card">
+<div class="card h-100">
   <h3 class="card-header">
    <?php echo $suite["Title"] ?>
 </h3>
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+<div class="carousel-inner" data-bs-interval="20">
+    <div class="carousel-item active">
+      <img src="upload/<?php echo $suite['photo1'] ?>"  class="d-block w-100 h-25" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="upload/<?php echo $suite['photo2'] ?>"  class="d-block w-100 h-25" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="upload/<?php echo $suite['photo3'] ?>"  class="d-block w-100 h-25" alt="...">
+    </div>
+    
+  </div>
+</div>
   <div class="card-body">
+ 
     <h5 class="card-title">Prix : <?php echo $suite["Price"] ?></h5>
     <h5 class="card-text">description : <?php echo $suite["description"] ?> </h5>
     <div class="col">
@@ -59,43 +71,20 @@ require('action/suite/showSuite.php')
 
   </div>
 
-
-<br><br>
-
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-<div class="carousel-inner" data-bs-interval="20">
-    <div class="carousel-item active">
-      <img src="upload/<?php echo $suite['photo1'] ?>" width="500" height="500" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="upload/<?php echo $suite['photo2'] ?>" width="500" height="500" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="upload/<?php echo $suite['photo3'] ?>" width="500" height="500" class="d-block w-100" alt="...">
-    </div>
   </div>
-</div>
+  
+ 
 
-
-
-
-
-
-
-
-<br><br>
 <?php
 }
 ?>
 
 
 
-
-
-
-
- 
 </div>
+</div>
+
+
 
 <?php include('includes/footer.php') ?>
 </body>
