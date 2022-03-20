@@ -16,7 +16,9 @@ if(isset($_POST['validate'])){
         $checkIfUserExists = $bdd->prepare('SELECT * FROM admin WHERE firstname_admin = ?');
         $checkIfUserExists->execute(array($user_pseudo));
 
-        $checkIfManagerExists = $bdd->prepare('SELECT * FROM manager WHERE firstname = ?');
+        $checkIfManagerExists = $bdd->prepare('SELECT * FROM manager 
+        
+        WHERE firstname = ?');
         $checkIfManagerExists->execute(array($user_pseudo));
 
         if($checkIfUserExists->rowCount() > 0){
@@ -57,6 +59,7 @@ if(isset($_POST['validate'])){
                 $_SESSION['id_manager'] = $managerInfos['manager_id'];
                 $_SESSION['lastname_manager'] = $managerInfos['lastname'];
                 $_SESSION['firstname_manager'] = $managerInfos['firstname'];
+                $_SESSION['establishment_manager'] = $managerInfos['establishment_id'];
                 
                 
                 //Rediriger l'utilisateur vers la page d'accueil

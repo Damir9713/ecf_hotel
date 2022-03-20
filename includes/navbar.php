@@ -31,6 +31,10 @@
         </li>
 
         <li class="nav-item ">
+          <a class="nav-link text-decoration-none" href="suiteManager.php">Suite</a>
+        </li>
+
+        <li class="nav-item ">
           <a class="nav-link text-decoration-none" href="logout.php">Déconnexion</a>
         </li>
 

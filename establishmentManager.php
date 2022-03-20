@@ -39,7 +39,7 @@ require('action/suite/showManagerEstablishment.php')
  
  
 <div class="card mx-auto mb-3">
-  <img src="upload/<?php echo $manager['photo'] ?>" width="1000" height="500" class="card-img-top" alt="...">
+  <img src="upload/<?php echo $manager['photo'] ?>"  height="250" class="card-img-top" alt="...">
   <div class="card-body">
   <h5 class="card-title"><?php echo $manager["name"] ?></h5>
     <p class="card-text"><?php echo $manager["description"] ?>.</p>
