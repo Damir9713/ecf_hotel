@@ -25,6 +25,10 @@ require('action/establishment/showEstablishment.php')
   echo '<h1>'.'Bonjour '.$_SESSION['firstname_manager'].'</h1>';
   
 } ?>
+<?php if(isset($_SESSION['id_customer'])){
+  echo '<h1>'.'Bonjour '.$_SESSION['firstname_customer'].'</h1>';
+  
+} ?>
 
 </div>
 
@@ -42,14 +46,12 @@ require('action/establishment/showEstablishment.php')
  
 <div class="col-lg-4 mb-3">
 
-
-
-
 <div class="card mx-auto h-100 " >
  <img src="upload/<?php echo $establishment['photo'] ?>"  class="card-img-top" alt="...">
  <div class="card-body">
  <h5 class="card-title"><?php echo $establishment["name"] ?></h5>
    <p class="card-text"><?php echo $establishment["description"] ?>.</p>
+   <a href="establishmentSuite.php?id=<?= $establishment['id']; ?>" class="btn btn-outline-warning">Voir les suites</a>
  </div>
 </div>
 </div>
@@ -65,11 +67,7 @@ require('action/establishment/showEstablishment.php')
 ?>
  </div>
 
-
 </div>
-
-
-
 
 <?php include('includes/footer.php') ?>
 </body>

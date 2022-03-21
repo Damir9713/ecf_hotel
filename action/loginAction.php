@@ -17,9 +17,12 @@ if(isset($_POST['validate'])){
         $checkIfUserExists->execute(array($user_pseudo));
 
         $checkIfManagerExists = $bdd->prepare('SELECT * FROM manager 
-        
         WHERE firstname = ?');
         $checkIfManagerExists->execute(array($user_pseudo));
+
+        $checkIfCustomerExists = $bdd->prepare('SELECT * FROM customer 
+        WHERE firstname = ?');
+        $checkIfCustomerExists->execute(array($user_pseudo));
 
         if($checkIfUserExists->rowCount() > 0){
             
@@ -71,8 +74,35 @@ if(isset($_POST['validate'])){
             $errorMsg = "Votre pseudo est incorrect...";
         }
     
+    
+    if($checkIfCustomerExists->rowCount() > 0){
+            
+            
+        //Récupérer les données de l'utilisateur
+        $customerInfos = $checkIfCustomerExists->fetch();
+
+        //Vérifier si le mot de passe est correct
+        if(password_verify($user_password , $customerInfos['password'])){
+            
+            //Authentifier l'utilisateur sur le site et récupérer ses données dans des variables globales sessions
+            $_SESSION['auth'] = true;
+            $_SESSION['id_customer'] = $customerInfos['id'];
+            $_SESSION['lastname_customer'] = $customerInfos['lastname'];
+            $_SESSION['firstname_customer'] = $customerInfos['firstname'];
+            
+            
+            
+            //Rediriger l'utilisateur vers la page d'accueil
+            header('Location: index.php');
+        }else{
+            $errorMsg = " Votre mot de passe est incorrect";
+        }
     }else{
-        $errorMsg = "Veuillez compléter tous les champs...";
+        $errorMsg = "Votre pseudo est incorrect...";
     }
+
+}else{
+    $errorMsg = "Veuillez compléter tous les champs...";
+}
 
 }

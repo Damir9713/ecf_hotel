@@ -40,6 +40,23 @@
 
       <?php
     }
+    else if(isset($_SESSION['id_customer'])){
+      ?>
+
+        <li class="nav-item ">
+          <a class="nav-link text-decoration-none" href="reserveSuite.php">Réserver une suite</a>
+        </li>
+
+        <li class="nav-item ">
+          <a class="nav-link text-decoration-none" href="myReservation.php">Voir mes réservations</a>
+        </li>
+
+        <li class="nav-item ">
+          <a class="nav-link text-decoration-none" href="logout.php">Déconnexion</a>
+        </li>
+
+      <?php
+    }
 else 
 {  
 ?>  
@@ -48,9 +65,17 @@ else
   <li class="nav-item">
           <a class="nav-link" href="index.php">Accueil</a>
          </li>
+
+         <li class="nav-item ">
+          <a class="nav-link text-decoration-none" href="reserveSuite.php">Réserver une suite</a>
+        </li>
+
+         <li class="nav-item">
+          <a class="nav-link" href="signupCustomer.php">S'inscrire</a>
+         </li>
     
   <li class="nav-item">
-          <a class="nav-link" href="login.php">se connecter </a>
+          <a class="nav-link" href="login.php">Se connecter </a>
               </li>
         
 
