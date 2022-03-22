@@ -18,6 +18,11 @@ if(isset($_POST['valider'])){
     $adress = htmlspecialchars($_POST['adress']);
 
 
+    $type_file = $_FILES['images']['type'];     
+    if( !strstr($type_file, 'jpg') && !strstr($type_file, 'jpeg') && !strstr($type_file, 'bmp') && !strstr($type_file, 'gif') ) {     
+       exit("Le fichier n'est pas une image");     
+    }
+
     $photo = $_FILES['images']['name'];
     $upload = "upload/".$photo;
 

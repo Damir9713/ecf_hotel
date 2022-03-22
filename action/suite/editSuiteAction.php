@@ -25,6 +25,21 @@ if(isset($_POST['valider'])){
         $new_suite_establishment = $_SESSION['establishment_manager'] ;
         $new_suite_manager = $_SESSION['id_manager'] ;
 
+        $type_file = $_FILES['firstphoto']['type'];     
+        if( !strstr($type_file, 'jpg') && !strstr($type_file, 'jpeg') && !strstr($type_file, 'bmp') && !strstr($type_file, 'gif') ) {     
+           exit("Erreur : Un des fichier n'est pas une image");     
+        }
+    
+        $type_file = $_FILES['secondphoto']['type'];     
+        if( !strstr($type_file, 'jpg') && !strstr($type_file, 'jpeg') && !strstr($type_file, 'bmp') && !strstr($type_file, 'gif') ) {     
+           exit("Erreur : Un des fichier n'est pas une image");   
+        }
+    
+        $type_file = $_FILES['thirdphoto']['type'];     
+        if( !strstr($type_file, 'jpg') && !strstr($type_file, 'jpeg') && !strstr($type_file, 'bmp') && !strstr($type_file, 'gif') ) {     
+           exit("Erreur : Un des fichier n'est pas une image");     
+        }
+
         $photo = $_FILES['firstphoto']['name'];
         $upload = "upload/".$photo;
 
