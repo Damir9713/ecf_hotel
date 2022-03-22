@@ -7,9 +7,12 @@ $photo = "";
 $photo1 = "";
 $photo2 = "";
 
+
+
 //Valider le formulaire
 if(isset($_POST['valider'])){
 
+    
     //Vérifier si les champs ne sont pas vides
     if(!empty($_POST['title']) 
     AND !empty($_POST['price']) 
@@ -29,16 +32,17 @@ if(isset($_POST['valider'])){
         if( !strstr($type_file, 'jpg') && !strstr($type_file, 'jpeg') && !strstr($type_file, 'bmp') && !strstr($type_file, 'gif') ) {     
            exit("Erreur : Un des fichier n'est pas une image");     
         }
-    
+        
         $type_file = $_FILES['secondphoto']['type'];     
         if( !strstr($type_file, 'jpg') && !strstr($type_file, 'jpeg') && !strstr($type_file, 'bmp') && !strstr($type_file, 'gif') ) {     
            exit("Erreur : Un des fichier n'est pas une image");   
         }
-    
+        
         $type_file = $_FILES['thirdphoto']['type'];     
         if( !strstr($type_file, 'jpg') && !strstr($type_file, 'jpeg') && !strstr($type_file, 'bmp') && !strstr($type_file, 'gif') ) {     
-           exit("Erreur : Un des fichier n'est pas une image");     
-        }
+           exit("Erreur : Un des fichier n'est pas une image");  
+        };
+
 
         $photo = $_FILES['firstphoto']['name'];
         $upload = "upload/".$photo;
@@ -87,6 +91,7 @@ if(isset($_POST['valider'])){
         
         $successMsg = "Votre suite a bien été ajoutée ";
         header('Location: suiteManager.php');
+
         }else{
             $errorMsg = "La suite existe déjà sur le site";
         }
@@ -94,5 +99,4 @@ if(isset($_POST['valider'])){
     }else{
         $errorMsg = "Veuillez remplir tout les champs";
         }
-
 }
