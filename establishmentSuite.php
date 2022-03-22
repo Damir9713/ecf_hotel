@@ -46,7 +46,7 @@ require('action/suite/showEstablishmentSuite.php')
     <h5 class="card-title">Prix : <?php echo $suite["Price"] ?></h5>
     <h5 class="card-text">description : <?php echo $suite["description"] ?> </h5>
     <div class="col">
-    <a href="" class="btn btn-outline-warning">Réserver</a>
+    <a href="quickReserve.php?suite_id=<?= $suite['suite_id']; ?>" class="btn btn-outline-warning">Réserver</a>
     </div>
     
   </div>

@@ -31,6 +31,8 @@ require('action/reservation/reserveAction.php')
                 
                 <select type="text" class="form-control" id="establishment" name="establishment" > 
 
+                <option value="" selected>Sélectionner un établissement</option>
+
                     <?php 
                     while($establishment = $getEstablishmentInfo->fetch()){
                         ?>
@@ -46,7 +48,7 @@ require('action/reservation/reserveAction.php')
                     <label for="exampleInputEmail1" class="form-label">Suite</label>
                     <select type="text"  id="suite" class="form-control" name="suite" > 
 
-                    <option value="">selectionner l'établissement</option>
+                    <option value="">Sélectionner d'abord l'établissement</option>
                     </select>
                         
                     </div>
@@ -56,11 +58,11 @@ require('action/reservation/reserveAction.php')
 
                 <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Date d'arrivée</label>
-                <input type="text" class="form-control" name="beginning" >
+                <input type="date" class="form-control" name="beginning" >
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Date de départ</label>
-                <input type="text" class="form-control" name="ending" >
+                <input type="date" class="form-control" name="ending" >
             </div>
                         
             </div>

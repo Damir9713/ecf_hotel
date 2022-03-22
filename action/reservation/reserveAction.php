@@ -19,8 +19,8 @@ if(isset($_POST['valider'])){
         $new_reservation_establishment = htmlspecialchars($_POST['establishment']);
         $new_reservation_suite = htmlspecialchars($_POST['suite']);
         $new_reservation_customer = $_SESSION['id_customer'];
-        $new_reservation_beginning = date('Y/m/d');
-        $new_reservation_ending = date('Y/m/d');
+        $new_reservation_beginning = htmlspecialchars($_POST['beginning']);
+        $new_reservation_ending = htmlspecialchars($_POST['ending']);
         
               //Insérer le manager sur la bdd
         $insertReservationOnWebsite = $bdd->prepare('INSERT INTO reservation(establishment_id, 

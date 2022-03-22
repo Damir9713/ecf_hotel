@@ -63,8 +63,8 @@ require('action/suite/showSuite.php')
     <h5 class="card-title">Prix : <?php echo $suite["Price"] ?></h5>
     <h5 class="card-text">description : <?php echo $suite["description"] ?> </h5>
     <div class="col">
-    <a href="editSuite.php?id=<?= $suite['id']; ?>" class="btn btn-outline-warning">Modifier</a>
-    <a href="action/suite/deleteSuite.php?id=<?= $suite['id']; ?>" class="btn btn-outline-warning">Supprimé</a>
+    <a href="editSuite.php?suite_id=<?= $suite['suite_id']; ?>" class="btn btn-outline-warning">Modifier</a>
+    <a href="action/suite/deleteSuite.php?suite_id=<?= $suite['suite_id']; ?>" class="btn btn-outline-warning">Supprimé</a>
     </div>
     
   </div>

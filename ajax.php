@@ -9,7 +9,7 @@ if(!empty($_POST["id"])){
     if($getList->rowCount() > 0){ 
         echo '<option value="">Choisir une suite</option>'; 
         while($row = $getList->fetch()){  
-            echo '<option value="'.$row['id'].'">'.$row['Title'].'</option>'; 
+            echo '<option value="'.$row['suite_id'].'">'.$row['Title'].'</option>'; 
         } 
     }
 }

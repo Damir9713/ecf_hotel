@@ -5,21 +5,21 @@ require('action/database.php');
 
 
 //Vérifier si l'id de la cible est bien passé en paramètre dans l'URL
-if(isset($_GET['id']) AND !empty($_GET['id'])){
+if(isset($_GET['suite_id']) AND !empty($_GET['suite_id'])){
 
-    $idOfSuite = $_GET['id'];
+    $idOfSuite = $_GET['suite_id'];
 
     //Vérifier si la cible existe
     $getSuiteInfo = $bdd->prepare('SELECT DISTINCT * FROM suite
    
-    WHERE id = ?');
+    WHERE suite_id = ?');
     $getSuiteInfo->execute(array($idOfSuite));
 
     if($getSuiteInfo->rowCount() > 0){
 
         //Récupérer les données de la cible
         $suiteInfo = $getSuiteInfo->fetch();
-        if($suiteInfo['id']){
+        if($suiteInfo['suite_id']){
             
             $suite_Title = $suiteInfo['Title'];
             $suite_price = $suiteInfo['Price'];

@@ -50,7 +50,7 @@ if(isset($_POST['valider'])){
               photo1 = ?,
               photo2 = ?,
               photo3 = ?  
-              WHERE id = ?');
+              WHERE suite_id = ?');
         
         $editSuiteOnWebsite->execute(
             array(
