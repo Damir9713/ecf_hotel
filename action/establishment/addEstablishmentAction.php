@@ -6,6 +6,9 @@ $photo = "";
 
 if(isset($_POST['valider'])){
 
+ 
+
+
   if(!empty($_POST['name'])
     AND !empty($_POST['city']) 
     AND !empty($_POST['adress'])  
@@ -18,16 +21,18 @@ if(isset($_POST['valider'])){
     $adress = htmlspecialchars($_POST['adress']);
 
     $type_file = $_FILES['images']['type'];     
-    if( !strstr($type_file, 'jpg') && !strstr($type_file, 'jpeg') && !strstr($type_file, 'bmp') && !strstr($type_file, 'gif') ) {     
-       exit("Le fichier n'est pas une image");     
+    if( !strstr($type_file, 'jpg') && !strstr($type_file, 'jpeg') && !strstr($type_file, 'bmp') && !strstr($type_file, 'gif') ) {    
+      exit ("Le fichier n'est pas une image");
     }
-
-
+  
+    $extensions = ['png', 'jpg', 'gif', 'jpeg'];
     $photo = $_FILES['images']['name'];
-    $upload = "upload/".$photo;
-
+    $typeExtension ='.'.strtolower(substr(strrchr($photo, '.'),1));
+    $uniqueName = uniqid('', true);
+    $file = $uniqueName.".".$typeExtension;
+    $upload = "upload/".$file;
     move_uploaded_file($_FILES['images']['tmp_name'], $upload);
-
+    
     $insertImage = $bdd->prepare('INSERT INTO establishment(name, 
     city, 
     adress, 
