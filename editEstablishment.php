@@ -19,12 +19,16 @@ require('action/establishment/getInfoOfEditedEstablishment.php');
     <div class="container">
         <?php if(isset($errorMsg)){ echo '<p>'.$errorMsg.'</p>';} 
 
+
+
         ?>
+
+
         
         <?php 
             if(isset($_SESSION['id_admin'])){ 
                 ?>
-                <form name="fo" class="container" method="post" enctype="multipart/form-data">
+                <form  class="container" method="post" enctype="multipart/form-data">
       <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Nom</label>
                 <input type="text" class="form-control" name="name" value="<?= $establishment_name; ?>">
@@ -47,26 +51,39 @@ require('action/establishment/getInfoOfEditedEstablishment.php');
 
             </div>
             
-            
-    
-            
-                    <button type="submit" class="btn btn-outline-warning" name="valider">Modifier l'établissement</button>
+            <button type="submit" class="btn btn-outline-warning" name="valider">Modifier l'établissement</button>
+                 
                     <br><br>
-                </form>
-
+            </form>
+            
                 
                 <?php
             }
         ?>
 
 
+
 <?php 
 
 require("action/database.php");
 
-$photo = "";
+
 
 if(isset($_POST['valider'])){
+
+  $type_file = $_FILES['images']['type'];     
+  if( !strstr($type_file, 'jpg') && !strstr($type_file, 'jpeg') && !strstr($type_file, 'bmp') && !strstr($type_file, 'gif') ) {    
+    exit ("Le fichier n'est pas une image");
+  }
+
+  $extensions = ['png', 'jpg', 'gif', 'jpeg'];
+  $photo = $_FILES['images']['name'];
+  $typeExtension ='.'.strtolower(substr(strrchr($photo, '.'),1));
+  $uniqueName = uniqid('', true);
+  $file = $uniqueName.".".$typeExtension;
+  $upload = "upload/".$file;
+  move_uploaded_file($_FILES['images']['tmp_name'], $upload);
+
 
   if(!empty($_POST['name'])
     AND !empty($_POST['city']) 
@@ -80,18 +97,7 @@ if(isset($_POST['valider'])){
     $adress = htmlspecialchars($_POST['adress']);
 
 
-    $type_file = $_FILES['images']['type'];     
-    if( !strstr($type_file, 'jpg') && !strstr($type_file, 'jpeg') && !strstr($type_file, 'bmp') && !strstr($type_file, 'gif') ) {    
-      exit ("Le fichier n'est pas une image");
-    }
-    
-    $photo = $_FILES['images']['name'];
-    $extensions = ['png', 'jpg', 'jpeg'];
-    $uniqueName = uniqid('', true);
-    $file = $uniqueName.".".strtolower(end($extensions));
-    $upload = "upload/".$file;
-    move_uploaded_file($_FILES['images']['tmp_name'], $upload);
-
+   
     $insertImage = $bdd->prepare('UPDATE establishment 
     SET name = ?, 
     city = ?, 
@@ -118,13 +124,12 @@ header('Location: establishmentAdmin.php');
 }
 }
 
-?>  
-        
-                        
-    </div>
-    
-
+?> 
+                      
+        </div>
 </body>
 </html>
+
+
 
 

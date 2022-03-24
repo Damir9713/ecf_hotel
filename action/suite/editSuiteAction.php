@@ -52,7 +52,6 @@ if(isset($_POST['valider'])){
 
         $photo2 = $_FILES['thirdphoto']['name'];
         $upload2 = "upload/".$photo2;
-
         move_uploaded_file($_FILES['thirdphoto']['tmp_name'], $upload2);
 
        
