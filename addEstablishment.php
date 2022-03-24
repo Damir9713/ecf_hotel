@@ -45,7 +45,11 @@ require('action/securityAdmin.php');
             <button type="submit" class="btn btn-outline-warning" name="valider">Ajouter un établissement</button>
             </div>
 
-            <?php 
+            
+    </form>
+
+
+    <?php 
 
 require("action/database.php");
 
@@ -92,7 +96,7 @@ $insertImage->execute(
      $city,
      $adress,
      $description,
-     $photo
+     $file
     
     )
 );
@@ -105,10 +109,6 @@ header('Location: establishmentAdmin.php');
 
  ?>
 
-    </form>
-
-
- 
 
 <?php include('includes/footer.php') ?>
 </body>
