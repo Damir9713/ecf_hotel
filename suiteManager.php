@@ -47,13 +47,13 @@ require('action/suite/showSuite.php')
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
 <div class="carousel-inner" data-bs-interval="20">
     <div class="carousel-item active">
-      <img src="upload/<?php echo $suite['photo1'] ?>"  class="d-block w-100 h-25" alt="...">
+      <img src="https://hypnosbucket.s3.eu-west-3.amazonaws.com/<?php echo $suite['photo1'] ?>"  class="d-block w-100 h-25" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="upload/<?php echo $suite['photo2'] ?>"  class="d-block w-100 h-25" alt="...">
+      <img src="https://hypnosbucket.s3.eu-west-3.amazonaws.com/<?php echo $suite['photo2'] ?>"  class="d-block w-100 h-25" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="upload/<?php echo $suite['photo3'] ?>"  class="d-block w-100 h-25" alt="...">
+      <img src="https://hypnosbucket.s3.eu-west-3.amazonaws.com/<?php echo $suite['photo3'] ?>"  class="d-block w-100 h-25" alt="...">
     </div>
     
   </div>

@@ -23,7 +23,7 @@ require 'vendor/autoload.php';
 
 <div class="container">
 
-<form   method="post" enctype="multipart/form-data">
+<form  action="<?=$_SERVER['PHP_SELF']?>  method="post" enctype="multipart/form-data">
       <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Ttire</label>
                 <input type="text" class="form-control" name="title">
