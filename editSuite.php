@@ -23,7 +23,7 @@ require 'vendor/autoload.php';
         <?php 
             if(isset($_SESSION['id_manager'])){ 
                 ?>
-                <form class="container"  method="post" enctype="multipart/form-data" >
+                <form class="container" action="<?=$_SERVER['PHP_SELF']?>  method="post" enctype="multipart/form-data" >
       <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Titre</label>
                 <input type="text" class="form-control" name="title" value="<?= $suite_Title; ?>">
@@ -38,7 +38,7 @@ require 'vendor/autoload.php';
             </div>
 
             <div class="mb-3">
-              <input type="file" name="firstphoto[]" multiple>
+              <input type="file" name="firstphoto" multiple>
               1 ère image carousel
             </div>
             <!-- <div class="mb-3">
@@ -86,7 +86,7 @@ if(isset($_POST['valider'])){
     // };
 
     // $extensions = ['png', 'jpg', 'gif', 'jpeg'];
-    $photo = $_FILES['firstphoto']['name'][$id];
+    $photo = $_FILES['firstphoto']['name'];
     $photo1 = $_FILES['secondphoto']['name'];
     $photo2 = $_FILES['thirdphoto']['name'];
     $typeExtension ='.'.strtolower(substr(strrchr($photo, '.'),1));
