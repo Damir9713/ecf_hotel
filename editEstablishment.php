@@ -4,8 +4,8 @@ require('action/securityAdmin.php');
 require('action/establishment/getInfoOfEditedEstablishment.php');
 // require('action/establishment/editEstablishment.php');
 require 'vendor/autoload.php';
-$link = ("https://hotelhypnos.s3.eu-west-3.amazonaws.com/");
-use Aws\S3\S3Client;
+
+
 
 ?>
 
@@ -93,60 +93,57 @@ if(isset($_POST['valider'])){
 
   $fileDir = $_FILES["images"]['tmp_name'];
 
-  $bucketName = 'hotelhypnos';
-	$IAM_KEY = 'AKIAUNFIAS2JOT26HUPX';
-	$IAM_SECRET = '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';
+  $bucketName = 'hypnosbucket';
+
 
 	// Connect to AWS
-	try {
+	
 		// You may need to change the region. It will say in the URL when the bucket is open
 		// and on creation.
-		$s3 = S3Client::factory(
-			array(
-				'credentials' => array(
-					'key' => $IAM_KEY,
-					'secret' => $IAM_SECRET
-				),
-				'version' => 'latest',
-				'region'  => 'eu-west-3'
-			)
-		);
-	} catch (Exception $e) {
-		// We use a die, so if this fails. It stops here. Typically this is a REST call so this would
-		// return a json object.
-		die("Error: " . $e->getMessage());
-	}
-
-	
+    
+		
 	// For this, I would generate a unqiue random string for the key name. But you can do whatever.
 	$keyName =  $uniqueName.".".$typeExtension;
 	$pathInS3 = 'https://s3.eu-west-3.amazonaws.com/' . $bucketName . '/' . $keyName;
 
-	// Add it to S3
-	try {
-		// Uploaded:
-		
-    
+  $s3 = new Aws\S3\S3Client([
+    'version'  => '2006-03-01',
+    'region'   => 'eu-west-3',
+  ]);
+ 
+  $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!');
+  if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['images']) && $_FILES['images']['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES['images']['tmp_name'])) {
+    // FIXME: you should add more of your own validation here, e.g. using ext/fileinfo
+    try {
+        // FIXME: you should not use 'name' for the upload, since that's the original filename from the user's computer - generate a random filename that you then store in your database, or similar
+        $upload = $s3->upload($bucket, $_FILES['images']['name'], fopen($_FILES['images']['tmp_name'], 'rb'), 'public-read');
 
-		$s3->putObject(
-			array(
-				'Bucket'=>$bucketName,
-				'Key' => $keyName,
-				'SourceFile' => $fileDir,
-        'StorageClass' => 'REDUCED_REDUNDANCY',
-        'ACL'    => 'public-read',
+       echo ('sucess ');
+ } catch(Exception $e) { 
+        echo('Ereur');
+} } 
+  
+  //   try {
+
+	// 	$s3->putObject(
+	// 		array(
+	// 			'Bucket'=>$bucketName,
+	// 			'Key' => $keyName,
+	// 			'SourceFile' => $fileDir,
+  //       'StorageClass' => 'REDUCED_REDUNDANCY',
+  //       'ACL'    => 'public-read',
         
-			)
-		);
+	// 		)
+	// 	);
 
-	} catch (S3Exception $e) {
-		die('Error:' . $e->getMessage());
-	} catch (Exception $e) {
-		die('Error:' . $e->getMessage());
-	}
+	// } catch (S3Exception $e) {
+	// 	die('Error:' . $e->getMessage());
+	// } catch (Exception $e) {
+	// 	die('Error:' . $e->getMessage());
+	// }
 
 
-	echo 'Image envoyé';
+	// echo 'Image envoyé';
 
 
 
