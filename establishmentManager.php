@@ -36,7 +36,7 @@ require('action/suite/showManagerEstablishment.php')
  <div class="col-lg-4 mb-3">
 
  <div class="card mx-auto ">
-  <img src="upload/<?php echo $manager['photo'] ?>"   class="card-img-top" alt="...">
+  <img src="https://hypnosbucket.s3.eu-west-3.amazonaws.com/<?php echo $manager['photo'] ?>"   class="card-img-top" alt="...">
   <div class="card-body">
   <h5 class="card-title"><?php echo $manager["name"] ?></h5>
     <p class="card-text"><?php echo $manager["description"] ?>.</p>

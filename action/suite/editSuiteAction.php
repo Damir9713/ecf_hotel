@@ -3,10 +3,6 @@
 // se connecter à la bdd
 require('action/database.php');
 
-$photo = "";
-$photo1 = "";
-$photo2 = "";
-
 //Valider le formulaire
 if(isset($_POST['valider'])){
 
@@ -29,31 +25,76 @@ if(isset($_POST['valider'])){
         if( !strstr($type_file, 'jpg') && !strstr($type_file, 'jpeg') && !strstr($type_file, 'bmp') && !strstr($type_file, 'gif') ) {     
            exit("Erreur : Un des fichier n'est pas une image");     
         }
-    
-        $type_file = $_FILES['secondphoto']['type'];     
-        if( !strstr($type_file, 'jpg') && !strstr($type_file, 'jpeg') && !strstr($type_file, 'bmp') && !strstr($type_file, 'gif') ) {     
+        
+        $type_file1 = $_FILES['secondphoto']['type'];     
+        if( !strstr($type_file1, 'jpg') && !strstr($type_file1, 'jpeg') && !strstr($type_file1, 'bmp') && !strstr($type_file1, 'gif') ) {     
            exit("Erreur : Un des fichier n'est pas une image");   
         }
+        
+        $type_file2 = $_FILES['thirdphoto']['type'];     
+        if( !strstr($type_file1, 'jpg') && !strstr($type_file1, 'jpeg') && !strstr($type_file, 'bmp') && !strstr($type_file1, 'gif') ) {     
+           exit("Erreur : Un des fichier n'est pas une image");  
+        };
+
+        $extensions = ['png', 'jpg', 'gif', 'jpeg'];
+        $photo = $_FILES['images']['name'];
+        $typeExtension ='.'.strtolower(substr(strrchr($photo, '.'),1));
+        $uniqueName = uniqid('', true);
+        $file = $uniqueName.".".$typeExtension;
+        $upload = "upload/".$file;
+        // move_uploaded_file($_FILES['images']['tmp_name'], $upload);
+      
+        $s3 = new Aws\S3\S3Client([
+          'version'  => '2006-03-01',
+          'region'   => 'eu-west-3',
+        ]);
+       
+        $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!');
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['firstphoto']) && $_FILES['firstphoto']['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES['firstphoto']['tmp_name'])) {
+          // FIXME: you should add more of your own validation here, e.g. using ext/fileinfo
+          try {
+              // FIXME: you should not use 'name' for the upload, since that's the original filename from the user's computer - generate a random filename that you then store in your database, or similar
+              $upload = $s3->upload(
+              $bucket, 
+              $file, 
+              fopen($_FILES['firstphoto']['tmp_name'], 'rb'), 
+              'public-read');
+      
+             echo ('sucess ');
+       } catch(Exception $e) { 
+              echo('Ereur');
+      } } 
+
+      if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['secondphoto']) && $_FILES['secondphoto']['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES['secondphoto']['tmp_name'])) {
+        // FIXME: you should add more of your own validation here, e.g. using ext/fileinfo
+        try {
+            // FIXME: you should not use 'name' for the upload, since that's the original filename from the user's computer - generate a random filename that you then store in your database, or similar
+            $upload = $s3->upload(
+            $bucket, 
+            $file, 
+            fopen($_FILES['secondphoto']['tmp_name'], 'rb'), 
+            'public-read');
     
-        $type_file = $_FILES['thirdphoto']['type'];     
-        if( !strstr($type_file, 'jpg') && !strstr($type_file, 'jpeg') && !strstr($type_file, 'bmp') && !strstr($type_file, 'gif') ) {     
-           exit("Erreur : Un des fichier n'est pas une image");     
-        }
+           echo ('sucess ');
+     } catch(Exception $e) { 
+            echo('Ereur');
+    } } 
 
-        $photo = $_FILES['firstphoto']['name'];
-        $upload = "upload/".$photo;
-
-        move_uploaded_file($_FILES['firstphoto']['tmp_name'], $upload);
-
-        $photo1 = $_FILES['secondphoto']['name'];
-        $upload1 = "upload/".$photo1;
-
-        move_uploaded_file($_FILES['secondphoto']['tmp_name'], $upload1);
-
-        $photo2 = $_FILES['thirdphoto']['name'];
-        $upload2 = "upload/".$photo2;
-        move_uploaded_file($_FILES['thirdphoto']['tmp_name'], $upload2);
-
+    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['thirdphoto']) && $_FILES['thirdphoto']['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES['thirdphoto']['tmp_name'])) {
+        // FIXME: you should add more of your own validation here, e.g. using ext/fileinfo
+        try {
+            // FIXME: you should not use 'name' for the upload, since that's the original filename from the user's computer - generate a random filename that you then store in your database, or similar
+            $upload = $s3->upload(
+            $bucket, 
+            $file, 
+            fopen($_FILES['thirdphoto']['tmp_name'], 'rb'), 
+            'public-read');
+    
+           echo ('sucess ');
+     } catch(Exception $e) { 
+            echo('Ereur');
+    } } 
+      
        
               //Insérer la suite sur la bdd
               $editSuiteOnWebsite = $bdd->prepare('UPDATE suite SET Title = ?, 
@@ -87,8 +128,5 @@ if(isset($_POST['valider'])){
         }else{
         $errorMsg = "Veuillez remplir tout les champs";
     }
-
-    
-
 
 }
