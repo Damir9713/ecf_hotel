@@ -107,7 +107,7 @@ if(isset($_POST['valider'])){
     ]);
    
     $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!');
-    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['firstphoto']) && $_FILES['firstphoto']['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES['firstphoto']['tmp_name'])) {
+    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['firstphoto']) && $_FILES['firstphoto']['error'] == UPLOAD_ERR_OK && move_uploaded_file($_FILES['firstphoto']['tmp_name'])) {
       // FIXME: you should add more of your own validation here, e.g. using ext/fileinfo
       try {
           // FIXME: you should not use 'name' for the upload, since that's the original filename from the user's computer - generate a random filename that you then store in your database, or similar
