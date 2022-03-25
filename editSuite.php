@@ -75,15 +75,15 @@ if(isset($_POST['valider'])){
        exit("Erreur : Un des fichier n'est pas une image");     
     }
     
-    $type_file1 = $_FILES['secondphoto']['type'];     
-    if( !strstr($type_file1, 'jpg') && !strstr($type_file1, 'jpeg') && !strstr($type_file1, 'bmp') && !strstr($type_file1, 'gif') ) {     
-       exit("Erreur : Un des fichier n'est pas une image");   
-    }
+    // $type_file1 = $_FILES['secondphoto']['type'];     
+    // if( !strstr($type_file1, 'jpg') && !strstr($type_file1, 'jpeg') && !strstr($type_file1, 'bmp') && !strstr($type_file1, 'gif') ) {     
+    //    exit("Erreur : Un des fichier n'est pas une image");   
+    // }
     
-    $type_file2 = $_FILES['thirdphoto']['type'];     
-    if( !strstr($type_file2, 'jpg') && !strstr($type_file2, 'jpeg') && !strstr($type_file2, 'bmp') && !strstr($type_file2, 'gif') ) {     
-       exit("Erreur : Un des fichier n'est pas une image");  
-    };
+    // $type_file2 = $_FILES['thirdphoto']['type'];     
+    // if( !strstr($type_file2, 'jpg') && !strstr($type_file2, 'jpeg') && !strstr($type_file2, 'bmp') && !strstr($type_file2, 'gif') ) {     
+    //    exit("Erreur : Un des fichier n'est pas une image");  
+    // };
 
     // $extensions = ['png', 'jpg', 'gif', 'jpeg'];
     $photo = $_FILES['firstphoto']['name'];
