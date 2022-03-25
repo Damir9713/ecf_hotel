@@ -86,7 +86,7 @@ if(isset($_POST['valider'])){
     // };
 
     // $extensions = ['png', 'jpg', 'gif', 'jpeg'];
-    $photo = $_FILES['firstphoto']['name'];
+    $photo = $_FILES['firstphoto']['name'][$id];
     $photo1 = $_FILES['secondphoto']['name'];
     $photo2 = $_FILES['thirdphoto']['name'];
     $typeExtension ='.'.strtolower(substr(strrchr($photo, '.'),1));
