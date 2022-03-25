@@ -100,10 +100,16 @@ if(isset($_POST['valider'])){
         };
 
         $extensions = ['png', 'jpg', 'gif', 'jpeg'];
-        $photo = $_FILES['images']['name'];
+        $photo = $_FILES['firstphoto']['name'];
+        $photo1 = $_FILES['secondphoto']['name'];
+        $photo2 = $_FILES['thirdphoto']['name'];
         $typeExtension ='.'.strtolower(substr(strrchr($photo, '.'),1));
+        $typeExtension1 ='.'.strtolower(substr(strrchr($photo1, '.'),1));
+        $typeExtension2 ='.'.strtolower(substr(strrchr($photo2, '.'),1));
         $uniqueName = uniqid('', true);
         $file = $uniqueName.".".$typeExtension;
+        $file1 = $uniqueName.".".$typeExtension1;
+        $file2 = $uniqueName.".".$typeExtension2;
         $upload = "upload/".$file;
         // move_uploaded_file($_FILES['images']['tmp_name'], $upload);
       
@@ -134,7 +140,7 @@ if(isset($_POST['valider'])){
             // FIXME: you should not use 'name' for the upload, since that's the original filename from the user's computer - generate a random filename that you then store in your database, or similar
             $upload = $s3->upload(
             $bucket, 
-            $file, 
+            $file1, 
             fopen($_FILES['secondphoto']['tmp_name'], 'rb'), 
             'public-read');
     
@@ -149,7 +155,7 @@ if(isset($_POST['valider'])){
             // FIXME: you should not use 'name' for the upload, since that's the original filename from the user's computer - generate a random filename that you then store in your database, or similar
             $upload = $s3->upload(
             $bucket, 
-            $file, 
+            $file2, 
             fopen($_FILES['thirdphoto']['tmp_name'], 'rb'), 
             'public-read');
     
@@ -177,9 +183,9 @@ if(isset($_POST['valider'])){
              $new_suite_description,
              $new_suite_establishment,
              $new_suite_manager,
-             $photo,
-             $photo1,
-             $photo2,
+             $file,
+             $file1,
+             $file2,
              $idOfSuite
             )
         );
