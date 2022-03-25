@@ -38,7 +38,7 @@ require 'vendor/autoload.php';
             </div>
 
             <div class="mb-3">
-              <input type="file" name="firstphoto" muultiple>
+              <input type="file" name="firstphoto" multiple>
               1 ère image carousel
             </div>
             <!-- <div class="mb-3">
