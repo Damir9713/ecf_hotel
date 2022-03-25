@@ -41,7 +41,7 @@ require('action/establishment/showEstablishment.php')
  <!-- width="400" height="150" -->
 
  <div class="card mx-auto h-100 " >
-  <img src="upload/<?php echo $establishment['photo'] ?>"  class="card-img-top" alt="...">
+  <img src="https://hypnosbucket.s3.eu-west-3.amazonaws.com/<?php echo $establishment['photo'] ?>"  class="card-img-top" alt="...">
   <div class="card-body">
   <h5 class="card-title"><?php echo $establishment["name"] ?></h5>
     <p class="card-text"><?php echo $establishment["description"] ?>.</p>
