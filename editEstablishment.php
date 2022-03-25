@@ -116,7 +116,11 @@ if(isset($_POST['valider'])){
     // FIXME: you should add more of your own validation here, e.g. using ext/fileinfo
     try {
         // FIXME: you should not use 'name' for the upload, since that's the original filename from the user's computer - generate a random filename that you then store in your database, or similar
-        $upload = $s3->upload($bucket, $_FILES['images']['name'], fopen($_FILES['images']['tmp_name'], 'rb'), 'public-read');
+        $upload = $s3->upload(
+        $bucket, 
+        $file, 
+        fopen($_FILES['images']['tmp_name'], 'rb'), 
+        'public-read');
 
        echo ('sucess ');
  } catch(Exception $e) { 
@@ -196,7 +200,7 @@ $sql->execute();
 
 while($img = $sql->fetch()){
   ?>
-    <img src="https://hotelhypnos.s3.eu-west-3.amazonaws.com/<?php echo $img['photo'];?>" alt="" width="200" class="img-fluid">
+    <img src="https://hypnosbucket.s3.eu-west-3.amazonaws.com/<?php echo $img['photo'];?>" alt="" width="200" class="img-fluid">
   <?php
 }
 
