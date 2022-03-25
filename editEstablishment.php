@@ -5,8 +5,6 @@ require('action/establishment/getInfoOfEditedEstablishment.php');
 // require('action/establishment/editEstablishment.php');
 require 'vendor/autoload.php';
 
-
-
 ?>
 
 
@@ -80,9 +78,6 @@ if(isset($_POST['valider'])){
     exit ("Le fichier n'est pas une image");
   }
 
- 
-
-
   $extensions = ['png', 'jpg', 'gif', 'jpeg'];
   $photo = $_FILES['images']['name'];
   $typeExtension ='.'.strtolower(substr(strrchr($photo, '.'),1));
@@ -90,21 +85,6 @@ if(isset($_POST['valider'])){
   $file = $uniqueName.".".$typeExtension;
   $upload = "upload/".$file;
   // move_uploaded_file($_FILES['images']['tmp_name'], $upload);
-
-  $fileDir = $_FILES["images"]['tmp_name'];
-
-  $bucketName = 'hypnosbucket';
-
-
-	// Connect to AWS
-	
-		// You may need to change the region. It will say in the URL when the bucket is open
-		// and on creation.
-    
-		
-	// For this, I would generate a unqiue random string for the key name. But you can do whatever.
-	$keyName =  $uniqueName.".".$typeExtension;
-	$pathInS3 = 'https://s3.eu-west-3.amazonaws.com/' . $bucketName . '/' . $keyName;
 
   $s3 = new Aws\S3\S3Client([
     'version'  => '2006-03-01',
@@ -127,31 +107,7 @@ if(isset($_POST['valider'])){
         echo('Ereur');
 } } 
   
-  //   try {
-
-	// 	$s3->putObject(
-	// 		array(
-	// 			'Bucket'=>$bucketName,
-	// 			'Key' => $keyName,
-	// 			'SourceFile' => $fileDir,
-  //       'StorageClass' => 'REDUCED_REDUNDANCY',
-  //       'ACL'    => 'public-read',
-        
-	// 		)
-	// 	);
-
-	// } catch (S3Exception $e) {
-	// 	die('Error:' . $e->getMessage());
-	// } catch (Exception $e) {
-	// 	die('Error:' . $e->getMessage());
-	// }
-
-
-	// echo 'Image envoyé';
-
-
-
-
+ 
   if(!empty($_POST['name'])
     AND !empty($_POST['city']) 
     AND !empty($_POST['adress'])  
