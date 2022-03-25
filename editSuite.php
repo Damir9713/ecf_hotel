@@ -85,7 +85,7 @@ if(isset($_POST['valider'])){
        exit("Erreur : Un des fichier n'est pas une image");  
     };
 
-    $extensions = ['png', 'jpg', 'gif', 'jpeg'];
+    // $extensions = ['png', 'jpg', 'gif', 'jpeg'];
     $photo = $_FILES['firstphoto']['name'];
     $photo1 = $_FILES['secondphoto']['name'];
     $photo2 = $_FILES['thirdphoto']['name'];
@@ -98,6 +98,8 @@ if(isset($_POST['valider'])){
     $file2 = $uniqueName.".".$typeExtension2;
     // $upload = "upload/".$file;
     // move_uploaded_file($_FILES['images']['tmp_name'], $upload);
+
+      
   
     $s3 = new Aws\S3\S3Client([
       'version'  => '2006-03-01',
@@ -111,8 +113,12 @@ if(isset($_POST['valider'])){
           // FIXME: you should not use 'name' for the upload, since that's the original filename from the user's computer - generate a random filename that you then store in your database, or similar
           $upload = $s3->upload(
           $bucket, 
-          $file, 
+          $file,
+          $file1,
+          $file2,
           fopen($_FILES['firstphoto']['tmp_name'], 'rb'), 
+          fopen($_FILES['secondphoto']['tmp_name'], 'rb'),
+          fopen($_FILES['thirdphoto']['tmp_name'], 'rb'), 
           'public-read');
   
          echo ('sucess ');
@@ -120,35 +126,35 @@ if(isset($_POST['valider'])){
           echo('Ereur');
   } } 
 
-  if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['secondphoto']) && $_FILES['secondphoto']['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES['secondphoto']['tmp_name'])) {
-    // FIXME: you should add more of your own validation here, e.g. using ext/fileinfo
-    try {
-        // FIXME: you should not use 'name' for the upload, since that's the original filename from the user's computer - generate a random filename that you then store in your database, or similar
-        $upload1 = $s3->upload(
-        $bucket, 
-        $file1, 
-        fopen($_FILES['secondphoto']['tmp_name'], 'rb'), 
-        'public-read');
+//   if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['secondphoto']) && $_FILES['secondphoto']['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES['secondphoto']['tmp_name'])) {
+//     // FIXME: you should add more of your own validation here, e.g. using ext/fileinfo
+//     try {
+//         // FIXME: you should not use 'name' for the upload, since that's the original filename from the user's computer - generate a random filename that you then store in your database, or similar
+//         $upload1 = $s3->upload(
+//         $bucket, 
+//         $file1, 
+//         fopen($_FILES['secondphoto']['tmp_name'], 'rb'), 
+//         'public-read');
 
-       echo ('sucess ');
- } catch(Exception $e) { 
-        echo('Ereur');
-} } 
+//        echo ('sucess ');
+//  } catch(Exception $e) { 
+//         echo('Ereur');
+// } } 
 
-if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['thirdphoto']) && $_FILES['thirdphoto']['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES['thirdphoto']['tmp_name'])) {
-    // FIXME: you should add more of your own validation here, e.g. using ext/fileinfo
-    try {
-        // FIXME: you should not use 'name' for the upload, since that's the original filename from the user's computer - generate a random filename that you then store in your database, or similar
-        $upload2 = $s3->upload(
-        $bucket, 
-        $file2, 
-        fopen($_FILES['thirdphoto']['tmp_name'], 'rb'), 
-        'public-read');
+// if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['thirdphoto']) && $_FILES['thirdphoto']['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES['thirdphoto']['tmp_name'])) {
+//     // FIXME: you should add more of your own validation here, e.g. using ext/fileinfo
+//     try {
+//         // FIXME: you should not use 'name' for the upload, since that's the original filename from the user's computer - generate a random filename that you then store in your database, or similar
+//         $upload2 = $s3->upload(
+//         $bucket, 
+//         $file2, 
+//         fopen($_FILES['thirdphoto']['tmp_name'], 'rb'), 
+//         'public-read');
 
-       echo ('sucess ');
- } catch(Exception $e) { 
-        echo('Ereur');
-} } 
+//        echo ('sucess ');
+//  } catch(Exception $e) { 
+//         echo('Ereur');
+// } } 
   
 
     //Vérifier si les champs ne sont pas vides
