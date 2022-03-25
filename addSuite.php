@@ -89,7 +89,7 @@ if(isset($_POST['valider'])){
     $file = $uniqueName.".".$typeExtension;
     $file1 = $uniqueName.".".$typeExtension1;
     $file2 = $uniqueName.".".$typeExtension2;
-    $upload = "upload/".$file;
+    // $upload = "upload/".$file;
     // move_uploaded_file($_FILES['images']['tmp_name'], $upload);
   
     $s3 = new Aws\S3\S3Client([

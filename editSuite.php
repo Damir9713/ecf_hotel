@@ -81,7 +81,7 @@ if(isset($_POST['valider'])){
     }
     
     $type_file2 = $_FILES['thirdphoto']['type'];     
-    if( !strstr($type_file1, 'jpg') && !strstr($type_file1, 'jpeg') && !strstr($type_file, 'bmp') && !strstr($type_file1, 'gif') ) {     
+    if( !strstr($type_file2, 'jpg') && !strstr($type_file2, 'jpeg') && !strstr($type_file2, 'bmp') && !strstr($type_file2, 'gif') ) {     
        exit("Erreur : Un des fichier n'est pas une image");  
     };
 
@@ -96,7 +96,7 @@ if(isset($_POST['valider'])){
     $file = $uniqueName.".".$typeExtension;
     $file1 = $uniqueName.".".$typeExtension1;
     $file2 = $uniqueName.".".$typeExtension2;
-    $upload = "upload/".$file;
+    // $upload = "upload/".$file;
     // move_uploaded_file($_FILES['images']['tmp_name'], $upload);
   
     $s3 = new Aws\S3\S3Client([
@@ -124,7 +124,7 @@ if(isset($_POST['valider'])){
     // FIXME: you should add more of your own validation here, e.g. using ext/fileinfo
     try {
         // FIXME: you should not use 'name' for the upload, since that's the original filename from the user's computer - generate a random filename that you then store in your database, or similar
-        $upload = $s3->upload(
+        $upload1 = $s3->upload(
         $bucket, 
         $file1, 
         fopen($_FILES['secondphoto']['tmp_name'], 'rb'), 
@@ -139,7 +139,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['thirdphoto']) && $_FIL
     // FIXME: you should add more of your own validation here, e.g. using ext/fileinfo
     try {
         // FIXME: you should not use 'name' for the upload, since that's the original filename from the user's computer - generate a random filename that you then store in your database, or similar
-        $upload = $s3->upload(
+        $upload2 = $s3->upload(
         $bucket, 
         $file2, 
         fopen($_FILES['thirdphoto']['tmp_name'], 'rb'), 
@@ -166,8 +166,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['thirdphoto']) && $_FIL
         $new_suite_establishment = $_SESSION['establishment_manager'] ;
         $new_suite_manager = $_SESSION['id_manager'] ;
 
-       
-       
               //Insérer la suite sur la bdd
               $editSuiteOnWebsite = $bdd->prepare('UPDATE suite SET Title = ?, 
               Price = ?, 
