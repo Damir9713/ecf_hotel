@@ -11,5 +11,7 @@
             "email": "damir12850@hotmail.fr"
         }
     ],
-    "require": {}
+    "require": {
+        "aws/aws-sdk-php": "^3.216"
+    }
 }

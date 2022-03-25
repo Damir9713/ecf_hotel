@@ -3,6 +3,9 @@ session_start();
 require('action/securityAdmin.php');
 require('action/establishment/getInfoOfEditedEstablishment.php');
 // require('action/establishment/editEstablishment.php');
+require 'vendor/autoload.php';
+$link = ("https://hotelhypnos.s3.eu-west-3.amazonaws.com/");
+use Aws\S3\S3Client;
 
 ?>
 
@@ -28,7 +31,7 @@ require('action/establishment/getInfoOfEditedEstablishment.php');
         <?php 
             if(isset($_SESSION['id_admin'])){ 
                 ?>
-                <form  class="container" method="post" enctype="multipart/form-data">
+                <form  action="<?php $_SERVER['PHP_SELF'] ?>" class="container" method="post" enctype="multipart/form-data">
       <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Nom</label>
                 <input type="text" class="form-control" name="name" value="<?= $establishment_name; ?>">
@@ -71,10 +74,12 @@ require("action/database.php");
 
 if(isset($_POST['valider'])){
 
+  
   $type_file = $_FILES['images']['type'];     
   if( !strstr($type_file, 'jpg') && !strstr($type_file, 'jpeg') && !strstr($type_file, 'bmp') && !strstr($type_file, 'gif') ) {    
     exit ("Le fichier n'est pas une image");
   }
+
 
   $extensions = ['png', 'jpg', 'gif', 'jpeg'];
   $photo = $_FILES['images']['name'];
@@ -83,6 +88,62 @@ if(isset($_POST['valider'])){
   $file = $uniqueName.".".$typeExtension;
   $upload = "upload/".$file;
   move_uploaded_file($_FILES['images']['tmp_name'], $upload);
+
+  $bucketName = 'hotelhypnos';
+	$IAM_KEY = 'AKIAUNFIAS2JDBXDAS6H';
+	$IAM_SECRET = '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';
+
+	// Connect to AWS
+	try {
+		// You may need to change the region. It will say in the URL when the bucket is open
+		// and on creation.
+		$s3 = S3Client::factory(
+			array(
+				'credentials' => array(
+					'key' => $IAM_KEY,
+					'secret' => $IAM_SECRET
+				),
+				'version' => 'latest',
+				'region'  => 'eu-west-3'
+			)
+		);
+	} catch (Exception $e) {
+		// We use a die, so if this fails. It stops here. Typically this is a REST call so this would
+		// return a json object.
+		die("Error: " . $e->getMessage());
+	}
+
+	
+	// For this, I would generate a unqiue random string for the key name. But you can do whatever.
+	$keyName =  $uniqueName.".".$typeExtension;
+	$pathInS3 = 'https://s3.eu-west-3.amazonaws.com/' . $bucketName . '/' . $keyName;
+
+	// Add it to S3
+	try {
+		// Uploaded:
+		
+
+		$s3->putObject(
+			array(
+				'Bucket'=>$bucketName,
+				'Key' => $keyName,
+				'SourceFile' => "upload/".$file,
+        'StorageClass' => 'REDUCED_REDUNDANCY',
+        'ACL'    => 'public-read',
+        
+			)
+		);
+
+	} catch (S3Exception $e) {
+		die('Error:' . $e->getMessage());
+	} catch (Exception $e) {
+		die('Error:' . $e->getMessage());
+	}
+
+
+	echo 'Image envoyé';
+
+
 
 
   if(!empty($_POST['name'])
@@ -125,6 +186,19 @@ header('Location: establishmentAdmin.php');
 }
 
 ?> 
+
+<?php 
+
+$sql = $bdd->prepare('SELECT * FROM establishment where id = 1');
+$sql->execute();
+
+while($img = $sql->fetch()){
+  ?>
+    <img src="https://hotelhypnos.s3.eu-west-3.amazonaws.com/<?php echo $img['photo'];?>" alt="" width="200" class="img-fluid">
+  <?php
+}
+
+?>
                       
         </div>
 </body>
