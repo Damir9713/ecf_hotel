@@ -80,6 +80,8 @@ if(isset($_POST['valider'])){
     exit ("Le fichier n'est pas une image");
   }
 
+ 
+
 
   $extensions = ['png', 'jpg', 'gif', 'jpeg'];
   $photo = $_FILES['images']['name'];
@@ -87,11 +89,13 @@ if(isset($_POST['valider'])){
   $uniqueName = uniqid('', true);
   $file = $uniqueName.".".$typeExtension;
   $upload = "upload/".$file;
-  move_uploaded_file($_FILES['images']['tmp_name'], $upload);
+  // move_uploaded_file($_FILES['images']['tmp_name'], $upload);
+
+  $fileDir = $_FILES["images"]['tmp_name'];
 
   $bucketName = 'hotelhypnos';
-	$IAM_KEY = 'AKIAUNFIAS2JDBXDAS6H';
-	$IAM_SECRET = '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';
+	$IAM_KEY = 'AKIAUNFIAS2JOT26HUPX';
+	$IAM_SECRET = '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';
 
 	// Connect to AWS
 	try {
@@ -122,12 +126,13 @@ if(isset($_POST['valider'])){
 	try {
 		// Uploaded:
 		
+    
 
 		$s3->putObject(
 			array(
 				'Bucket'=>$bucketName,
 				'Key' => $keyName,
-				'SourceFile' => "upload/".$file,
+				'SourceFile' => $fileDir,
         'StorageClass' => 'REDUCED_REDUNDANCY',
         'ACL'    => 'public-read',
         
@@ -198,7 +203,7 @@ while($img = $sql->fetch()){
   <?php
 }
 
-?>
+?> 
                       
         </div>
 </body>
