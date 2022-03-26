@@ -39,21 +39,8 @@ require 'vendor/autoload.php';
 
             <div class="mb-3">
               <input type="file" name="firstphoto">
-              <input type="file" name="thirdphoto">
-              <input type="file" name="secondphoto">
               1 ère image carousel
             </div>
-            <div class="mb-3">
-              
-              2 ème image carousel
-            </div>
-            <div class="mb-3">
-              
-              3 ème image carousel
-            </div>
-            
-            
-       
                     <button type="submit" class="btn btn-outline-warning" name="valider">Modifier la suite</button>
                     <br><br>
                 </form>
@@ -77,27 +64,11 @@ if(isset($_POST['valider'])){
        exit("Erreur : Un des fichier n'est pas une image");     
     }
     
-    $type_file1 = $_FILES['secondphoto']['type'];     
-    if( !strstr($type_file1, 'jpg') && !strstr($type_file1, 'jpeg') && !strstr($type_file1, 'bmp') && !strstr($type_file1, 'gif') ) {     
-       exit("Erreur : Un des fichier n'est pas une image");   
-    }
-    
-    $type_file2 = $_FILES['thirdphoto']['type'];     
-    if( !strstr($type_file2, 'jpg') && !strstr($type_file2, 'jpeg') && !strstr($type_file2, 'bmp') && !strstr($type_file2, 'gif') ) {     
-       exit("Erreur : Un des fichier n'est pas une image");  
-    };
-
     // $extensions = ['png', 'jpg', 'gif', 'jpeg'];
     $photo = $_FILES['firstphoto']['name'];
-    $photo1 = $_FILES['secondphoto']['name'];
-    $photo2 = $_FILES['thirdphoto']['name'];
     $typeExtension ='.'.strtolower(substr(strrchr($photo, '.'),1));
-    $typeExtension1 ='.'.strtolower(substr(strrchr($photo1, '.'),1));
-    $typeExtension2 ='.'.strtolower(substr(strrchr($photo2, '.'),1));
     $uniqueName = uniqid('', true);
     $file = $uniqueName.".".$typeExtension;
-    $file1 = $uniqueName.".".$typeExtension1;
-    $file2 = $uniqueName.".".$typeExtension2;
     // $upload = "upload/".$file;
     // move_uploaded_file($_FILES['images']['tmp_name'], $upload);
 
@@ -124,35 +95,6 @@ if(isset($_POST['valider'])){
           echo('Ereur');
   } } 
 
-  if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['secondphoto']) && $_FILES['secondphoto']['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES['secondphoto']['tmp_name'])) {
-    // FIXME: you should add more of your own validation here, e.g. using ext/fileinfo
-    try {
-        // FIXME: you should not use 'name' for the upload, since that's the original filename from the user's computer - generate a random filename that you then store in your database, or similar
-        $upload1 = $s3->upload(
-        $bucket, 
-        $file1, 
-        fopen($_FILES['secondphoto']['tmp_name'], 'rb'), 
-        'public-read');
-
-       echo ('sucess ');
- } catch(Exception $e) { 
-        echo('Ereur');
-} } 
-
-if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['thirdphoto']) && $_FILES['thirdphoto']['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES['thirdphoto']['tmp_name'])) {
-    // FIXME: you should add more of your own validation here, e.g. using ext/fileinfo
-    try {
-        // FIXME: you should not use 'name' for the upload, since that's the original filename from the user's computer - generate a random filename that you then store in your database, or similar
-        $upload2 = $s3->upload(
-        $bucket, 
-        $file2, 
-        fopen($_FILES['thirdphoto']['tmp_name'], 'rb'), 
-        'public-read');
-
-       echo ('sucess ');
- } catch(Exception $e) { 
-        echo('Ereur');
-} } 
   
 
     //Vérifier si les champs ne sont pas vides
@@ -176,9 +118,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['thirdphoto']) && $_FIL
               description = ?, 
               establishment_id = ?, 
               manager_id = ?,
-              photo1 = ?,
-              photo2 = ?,
-              photo3 = ?  
+              photo1 = ? 
               WHERE suite_id = ?');
         
         $editSuiteOnWebsite->execute(
@@ -189,8 +129,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['thirdphoto']) && $_FIL
              $new_suite_establishment,
              $new_suite_manager,
              $file,
-             $file1,
-             $file2,
              $idOfSuite
             )
         );

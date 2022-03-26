@@ -44,29 +44,20 @@ require('action/suite/showSuite.php')
   <h3 class="card-header">
    <?php echo $suite["Title"] ?>
 </h3>
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-<div class="carousel-inner" data-bs-interval="20">
-    <div class="carousel-item active">
+<div>
+<div class="">
+    <div class="">
       <img src="https://hypnosbucket.s3.eu-west-3.amazonaws.com/<?php echo $suite['photo1'] ?>"  class="d-block w-100 h-25" alt="...">
     </div>
-    <div class="carousel-item">
-      <img src="https://hypnosbucket.s3.eu-west-3.amazonaws.com/<?php echo $suite['photo2'] ?>"  class="d-block w-100 h-25" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="https://hypnosbucket.s3.eu-west-3.amazonaws.com/<?php echo $suite['photo3'] ?>"  class="d-block w-100 h-25" alt="...">
-    </div>
-    
   </div>
 </div>
   <div class="card-body">
- 
     <h5 class="card-title">Prix : <?php echo $suite["Price"] ?></h5>
     <h5 class="card-text">description : <?php echo $suite["description"] ?> </h5>
     <div class="col">
     <a href="editSuite.php?suite_id=<?= $suite['suite_id']; ?>" class="btn btn-outline-warning">Modifier</a>
     <a href="action/suite/deleteSuite.php?suite_id=<?= $suite['suite_id']; ?>" class="btn btn-outline-warning">Supprimé</a>
     </div>
-    
   </div>
 
   </div>
