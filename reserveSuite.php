@@ -21,13 +21,11 @@ require('action/reservation/reserveAction.php')
         ?>
 </div>
 
-
-
 <form  class="container" method="post">
       
             
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Etablissement</label>
+                <label  class="form-label">Etablissement</label>
                 
                 <select type="text" class="form-control" id="establishment" name="establishment" > 
 
@@ -45,32 +43,30 @@ require('action/reservation/reserveAction.php')
 
                     <div class="mb-3">
 
-                    <label for="exampleInputEmail1" class="form-label">Suite</label>
+                    <label  class="form-label">Suite</label>
                     <select type="text"  id="suite" class="form-control" name="suite" > 
 
                     <option value="">Sélectionner d'abord l'établissement</option>
                     </select>
                         
                     </div>
-                
-
-
-
-                <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Date d'arrivée</label>
-                <input type="date" class="form-control" name="beginning" >
+             
+                      
+            <div class="mb-3">
+                <label  class="form-label">Date d'arrivée</label>
+                <input type="date" class="form-control" name="beginning">
             </div>
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Date de départ</label>
-                <input type="date" class="form-control" name="ending" >
-            </div>
-                        
-            </div>
+                <label  class="form-label">Date de départ</label>
+                <input type="date" class="form-control" name="ending">
+            </div>     
+            
            
-      
-            <button type="submit" class="btn btn-outline-warning" name="valider">Valider réservation</button>
-            </div>
+            <button type="submit" class="btn btn-outline-warning" name="valider">Valider réservation</button>           
+            
+        
     </form>
+</div>
 
     <script>
      

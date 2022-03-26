@@ -1,7 +1,8 @@
 
 <?php 
 
-require('action/loginAction.php'); ?>
+require('action/loginAction.php');
+ ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,8 +14,8 @@ require('action/loginAction.php'); ?>
 
 <form class="container" method="POST">
 
-        <?php if(isset($errorMsg)){ echo '<p>'.$errorMsg.'</p>'; } 
-        
+        <?php if(isset($errorMsg)){ echo '<p>'.$errorMsg.'</p>'; }
+            
         ?>
         
          

@@ -51,7 +51,8 @@ require 'vendor/autoload.php';
             }
         ?>
         <?php
-        // se connecter à la bdd
+
+// se connecter à la bdd
 require('action/database.php');
 
 //Valider le formulaire
@@ -60,7 +61,7 @@ if(isset($_POST['valider'])){
 
     $type_file = $_FILES['firstphoto']['type'];     
     if( !strstr($type_file, 'jpg') && !strstr($type_file, 'jpeg') && !strstr($type_file, 'bmp') && !strstr($type_file, 'gif') ) {     
-       exit("Erreur : Un des fichier n'est pas une image");     
+       exit("Un des fichier n'est pas une image, ou rajouter une image ou veuillez remplir tout les champs");     
     }
     
     // $extensions = ['png', 'jpg', 'gif', 'jpeg'];

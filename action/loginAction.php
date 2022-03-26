@@ -41,13 +41,11 @@ if(isset($_POST['validate'])){
                 
                 //Rediriger l'utilisateur vers la page d'accueil
                 header('Location: establishmentAdmin.php');
-            }else{
-                $errorMsg = " Votre mot de passe est incorrect";
-            }
-        }else{
-            $errorMsg = "Votre pseudo est incorrect...";
-        }
-
+    }
+    }else{
+    $errorMsg = "Votre pseudo est incorrect ou le mot de passe";
+    }
+        
         if($checkIfManagerExists->rowCount() > 0){
             
             
@@ -67,38 +65,35 @@ if(isset($_POST['validate'])){
                 
                 //Rediriger l'utilisateur vers la page d'accueil
                 header('Location: establishmentManager.php');
-            }else{
-                $errorMsg = " Votre mot de passe est incorrect";
-            }
-        }else{
-            $errorMsg = "Votre pseudo est incorrect...";
-        }
-    
-    
-    if($checkIfCustomerExists->rowCount() > 0){
-            
-            
-        //Récupérer les données de l'utilisateur
-        $customerInfos = $checkIfCustomerExists->fetch();
-
-        //Vérifier si le mot de passe est correct
-        if(password_verify($user_password , $customerInfos['password'])){
-            
-            //Authentifier l'utilisateur sur le site et récupérer ses données dans des variables globales sessions
-            $_SESSION['auth'] = true;
-            $_SESSION['id_customer'] = $customerInfos['id'];
-            $_SESSION['lastname_customer'] = $customerInfos['lastname'];
-            $_SESSION['firstname_customer'] = $customerInfos['firstname'];
-            
-            
-            
-            //Rediriger l'utilisateur vers la page d'accueil
-            header('Location: index.php');
-        }else{
-            $errorMsg = " Votre mot de passe est incorrect";
-        }
+          
+       
+    }
     }else{
-        $errorMsg = "Votre pseudo est incorrect...";
+    $errorMsg = "Votre pseudo est incorrect ou le mot de passe";
+    }
+        if($checkIfCustomerExists->rowCount() > 0){
+            
+            
+            //Récupérer les données de l'utilisateur
+            $customerInfos = $checkIfCustomerExists->fetch();
+    
+            //Vérifier si le mot de passe est correct
+            if(password_verify($user_password , $customerInfos['password'])){
+                
+                //Authentifier l'utilisateur sur le site et récupérer ses données dans des variables globales sessions
+                $_SESSION['auth'] = true;
+                $_SESSION['id_customer'] = $customerInfos['id'];
+                $_SESSION['lastname_customer'] = $customerInfos['lastname'];
+                $_SESSION['firstname_customer'] = $customerInfos['firstname'];
+                
+                
+                
+                //Rediriger l'utilisateur vers la page d'accueil
+                header('Location: index.php');
+        
+    }    
+    }else{
+    $errorMsg = "Votre pseudo est incorrect ou le mot de passe";
     }
 
 }else{
@@ -106,3 +101,4 @@ if(isset($_POST['validate'])){
 }
 
 }
+
