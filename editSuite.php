@@ -41,14 +41,14 @@ require 'vendor/autoload.php';
               <input type="file" name="firstphoto" multiple>
               1 ère image carousel
             </div>
-            <!-- <div class="mb-3">
+            <div class="mb-3">
               <input type="file" name="secondphoto">
               2 ème image carousel
             </div>
             <div class="mb-3">
               <input type="file" name="thirdphoto">
               3 ème image carousel
-            </div> -->
+            </div>
             
             
        
