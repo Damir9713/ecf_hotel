@@ -13,7 +13,7 @@ if(isset($_POST['valider'])){
     
     $type_file = $_FILES['firstphoto']['type'];     
     if( !strstr($type_file, 'jpg') && !strstr($type_file, 'jpeg') && !strstr($type_file, 'bmp') && !strstr($type_file, 'gif') ) {     
-       echo("Le fichier n'est pas une image ou rajouter une image");     
+       exit("Le fichier n'est pas une image ou rajouter une image");     
     }
     
     $extensions = ['png', 'jpg', 'gif', 'jpeg'];
@@ -125,7 +125,7 @@ if(isset($_POST['valider'])){
 
 <form    method="post" enctype="multipart/form-data">
       <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Ttire</label>
+                <label for="exampleInputEmail1" class="form-label">Titre</label>
                 <input type="text" class="form-control" name="title">
             </div>
             <div class="mb-3">
