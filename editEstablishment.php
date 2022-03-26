@@ -29,7 +29,7 @@ require 'vendor/autoload.php';
         <?php 
             if(isset($_SESSION['id_admin'])){ 
                 ?>
-                <form  action="<?php $_SERVER['PHP_SELF'] ?>" class="container" method="post" enctype="multipart/form-data">
+                <form   class="container" method="post" enctype="multipart/form-data">
       <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Nom</label>
                 <input type="text" class="form-control" name="name" value="<?= $establishment_name; ?>">
