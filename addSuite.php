@@ -13,7 +13,7 @@ if(isset($_POST['valider'])){
     
     $type_file = $_FILES['firstphoto']['type'];     
     if( !strstr($type_file, 'jpg') && !strstr($type_file, 'jpeg') && !strstr($type_file, 'bmp') && !strstr($type_file, 'gif') ) {     
-       exit("Erreur : Un des fichier n'est pas une image");     
+       echo("Le fichier n'est pas une image ou rajouter une image");     
     }
     
     $extensions = ['png', 'jpg', 'gif', 'jpeg'];
@@ -139,7 +139,6 @@ if(isset($_POST['valider'])){
             
             <div class="mb-3">
               <input type="file" name="firstphoto">
-              1 ère image carousel
             </div>
             <button type="submit" class="btn btn-outline-warning" name="valider">Ajouter une suite</button>
             </div>

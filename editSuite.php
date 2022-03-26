@@ -39,7 +39,6 @@ require 'vendor/autoload.php';
 
             <div class="mb-3">
               <input type="file" name="firstphoto">
-              1 ère image carousel
             </div>
                     <button type="submit" class="btn btn-outline-warning" name="valider">Modifier la suite</button>
                     <br><br>
