@@ -111,7 +111,7 @@ if(isset($_POST['valider'])){
       // FIXME: you should add more of your own validation here, e.g. using ext/fileinfo
       try {
           // FIXME: you should not use 'name' for the upload, since that's the original filename from the user's computer - generate a random filename that you then store in your database, or similar
-          $upload = $s3->putObject(
+          $upload = $s3->upload(
           $bucket, 
           $file, 
           fopen($_FILES['firstphoto']['tmp_name'], 'rb'), 
@@ -126,7 +126,7 @@ if(isset($_POST['valider'])){
     // FIXME: you should add more of your own validation here, e.g. using ext/fileinfo
     try {
         // FIXME: you should not use 'name' for the upload, since that's the original filename from the user's computer - generate a random filename that you then store in your database, or similar
-        $upload1 = $s3->putObject(
+        $upload1 = $s3->upload(
         $bucket, 
         $file1, 
         fopen($_FILES['secondphoto']['tmp_name'], 'rb'), 
@@ -141,7 +141,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['thirdphoto']) && $_FIL
     // FIXME: you should add more of your own validation here, e.g. using ext/fileinfo
     try {
         // FIXME: you should not use 'name' for the upload, since that's the original filename from the user's computer - generate a random filename that you then store in your database, or similar
-        $upload2 = $s3->putObject(
+        $upload2 = $s3->upload(
         $bucket, 
         $file2, 
         fopen($_FILES['thirdphoto']['tmp_name'], 'rb'), 
