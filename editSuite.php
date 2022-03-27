@@ -62,7 +62,7 @@ if(isset($_POST['valider'])){
     if(!empty($_POST['title']) 
     AND !empty($_POST['price']) 
     AND !empty($_POST['description']) 
-    AND !empty($_FILES['firstphoto']['tmp_name'])  
+    AND !empty($_FILES['firstphoto']['name']) 
      )
     {
 
@@ -97,11 +97,8 @@ if(isset($_POST['valider'])){
   
 
     $type_file = $_FILES['firstphoto']['type'];     
-    if(strstr($type_file, 'jpg') && strstr($type_file, 'jpeg') && strstr($type_file, 'bmp') && strstr($type_file, 'gif')) {  
+    if(!strstr($type_file, 'jpg') && !strstr($type_file, 'jpeg') && !strstr($type_file, 'bmp') && !strstr($type_file, 'gif')) {  
         
-  
-   
-          
           //Les données de la suite
           //Les données à faire passer dans la requête
           $new_suite_title = htmlspecialchars($_POST['title']);
