@@ -27,12 +27,7 @@ if(isset($_POST['valider'])){
         
         if(in_array($type_file, $type)) { 
 
-        $new_suite_title = htmlspecialchars($_POST['title']);
-        $new_suite_price = htmlspecialchars($_POST['price']);
-        $new_suite_description = nl2br(htmlspecialchars($_POST['description']));
-        $new_suite_establishment = $_SESSION['establishment_manager']; 
-        $new_suite_manager = $_SESSION['id_manager'];  
-      
+       
       
       
         $s3 = new Aws\S3\S3Client([
@@ -56,7 +51,12 @@ if(isset($_POST['valider'])){
               echo('Ereur');
       } } 
 
-        
+      $new_suite_title = htmlspecialchars($_POST['title']);
+      $new_suite_price = htmlspecialchars($_POST['price']);
+      $new_suite_description = nl2br(htmlspecialchars($_POST['description']));
+      $new_suite_establishment = $_SESSION['establishment_manager']; 
+      $new_suite_manager = $_SESSION['id_manager'];  
+    
 
               //Insérer le manager sur la bdd
         $insertManagerOnWebsite = $bdd->prepare('INSERT INTO suite(Title, 
@@ -65,9 +65,7 @@ if(isset($_POST['valider'])){
         establishment_id,
         manager_id,
         photo1,
-        photo2,
-        photo3
-        ) VALUES(?, ?, ?, ?, ?,?,?,?)');
+        ) VALUES(?, ?, ?, ?, ?,?)');
         
         $insertManagerOnWebsite->execute(
             array(
