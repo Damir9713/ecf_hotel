@@ -3,8 +3,6 @@
 
 require('action/securityCustomer.php');
 require('action/reservation/showMyReservation.php');
-
-
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +15,14 @@ require('action/reservation/showMyReservation.php');
 <br><br>
 
 <div class="container-fluid">
+
+<?php 
+            if(isset($successMsg)){ 
+                echo '<p>'.$successMsg.'</p>'; 
+            }
+
+            
+        ?>
 
 <?php if(isset($_SESSION['id_customer'])){
   echo '<h1>'.'Bonjour '.$_SESSION['firstname_customer'].'</h1>';

@@ -39,7 +39,6 @@ if(isset($_POST['valider'])){
      
      
         if($checkAvailability->rowCount() == 0){
-            
         $insertReservationOnWebsite = $bdd->prepare('INSERT INTO reservation
         (establishment_id, 
         suite_id, 
@@ -56,13 +55,16 @@ if(isset($_POST['valider'])){
              $new_reservation_ending
             )
             );
+
+            
+            header('Location: myReservation.php');
+            $successMsg = "Votre reservation a bien été ajoutée ";
         }else{
-            echo "Pas disponible";
+            $errorMsg = "Cette suite n'est pas disponible à cette date";
             
         }
         
-        $successMsg = "Votre reservation a bien été ajoutée ";
-        header('Location: myReservation.php');
+        
         }else{
             $errorMsg = "Veuillez remplir tout les champs";
         }
