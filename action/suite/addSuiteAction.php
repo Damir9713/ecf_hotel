@@ -22,7 +22,7 @@ if(isset($_POST['valider'])){
         $typeExtension ='.'.strtolower(substr(strrchr($photo, '.'),1));
         $uniqueName = uniqid('', true);
         $file = $uniqueName.".".$typeExtension;
-        $upload = "upload/".$file;
+        // $upload = "upload/".$file;
         // move_uploaded_file($_FILES['images']['tmp_name'], $upload);
         
         if(in_array($type_file, $type)) { 
@@ -46,7 +46,7 @@ if(isset($_POST['valider'])){
               fopen($_FILES['firstphoto']['tmp_name'], 'rb'), 
               'public-read');
       
-             echo ('sucess ');
+             echo('sucess');
        } catch(Exception $e) { 
               echo('Ereur');
       } } 
@@ -64,7 +64,7 @@ if(isset($_POST['valider'])){
         description, 
         establishment_id,
         manager_id,
-        photo1,
+        photo1
         ) VALUES(?, ?, ?, ?, ?,?)');
         
         $insertManagerOnWebsite->execute(
@@ -74,7 +74,7 @@ if(isset($_POST['valider'])){
              $new_suite_description,
              $new_suite_establishment,
              $new_suite_manager,
-             $file,
+             $file
             )
         );
         
