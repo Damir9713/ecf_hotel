@@ -62,7 +62,7 @@ if(isset($_POST['valider'])){
     if(!empty($_POST['title']) 
     AND !empty($_POST['price']) 
     AND !empty($_POST['description']) 
-    AND !empty($_FILES['firstphoto'])  
+    AND !empty($_FILES['firstphoto']['tmp_name'])  
      )
     {
 
