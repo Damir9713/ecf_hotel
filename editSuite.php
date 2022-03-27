@@ -75,7 +75,7 @@ if(isset($_POST['valider'])){
     // move_uploaded_file($_FILES['images']['tmp_name'], $upload);
 
     $type_file = $_FILES['firstphoto']['type'];     
-    if(!strstr($type_file, 'jpg') && !strstr($type_file, 'jpeg') && !strstr($type_file, 'bmp') && !strstr($type_file, 'gif')) {  
+    if(strstr($type_file, 'jpg') && strstr($type_file, 'jpeg') && strstr($type_file, 'bmp') && strstr($type_file, 'gif')) {  
         
   
     $s3 = new Aws\S3\S3Client([
