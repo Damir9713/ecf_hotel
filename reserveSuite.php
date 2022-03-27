@@ -2,7 +2,7 @@
 session_start();
 require('action/securityCustomer.php');
 require('action/establishment/showEstablishment.php');
-require('action/reservation/reserveAction.php')
+require('action/reservation/reserveAction.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,9 +18,12 @@ require('action/reservation/reserveAction.php')
             }elseif(isset($successMsg)){ 
                 echo '<p>'.$successMsg.'</p>'; 
             }
+
+            
         ?>
 </div>
 
+<div class="container">
 <form  class="container" method="post">
       
             
@@ -66,6 +69,15 @@ require('action/reservation/reserveAction.php')
             
         
     </form>
+
+    
+<br><br>
+
+
+
+
+
+
 </div>
 
     <script>

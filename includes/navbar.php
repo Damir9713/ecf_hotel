@@ -40,7 +40,7 @@
 
       <?php
     }
-    else if(isset($_SESSION['id_customer'])){
+    elseif(isset($_SESSION['id_customer'])){
       ?>
 
         <li class="nav-item ">
