@@ -56,10 +56,7 @@ if(isset($_POST['valider'])){
               echo('Ereur');
       } } 
 
-        $checkIfSuiteAlreadyExists = $bdd->prepare('SELECT Title FROM suite WHERE Title = ?');
-        $checkIfSuiteAlreadyExists->execute(array($new_suite_title));
         
-        if($checkIfSuiteAlreadyExists->rowCount() == 0) {
 
               //Insérer le manager sur la bdd
         $insertManagerOnWebsite = $bdd->prepare('INSERT INTO suite(Title, 
@@ -86,9 +83,6 @@ if(isset($_POST['valider'])){
         $successMsg = "Votre suite a bien été ajoutée ";
         header('Location: suiteManager.php');
 
-        }else{
-            $errorMsg = "La suite existe déjà sur le site";
-        }
 
         }else{
             $errorMsg = "Veuillez mettre une image au bon format";
