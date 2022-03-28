@@ -27,8 +27,6 @@ if(isset($_POST['valider'])){
         
         if(in_array($type_file, $type)) { 
 
-       
-      
       
         $s3 = new Aws\S3\S3Client([
           'version'  => '2006-03-01',

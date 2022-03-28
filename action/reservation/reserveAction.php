@@ -18,34 +18,32 @@ if(isset($_POST['valider'])){
         $new_reservation_beginning = htmlspecialchars($_POST['beginning']);
         $new_reservation_ending = htmlspecialchars($_POST['ending']);
 
-        $getDate = $bdd->prepare("SELECT DISTINCT * FROM reservation
-        WHERE reservation.suite_id = '$new_reservation_suite'
-        ");
-        $getDate->execute();
-
-        $reservation = $getDate->fetch();
-        $beginning = $reservation['beginningDate'];
-        $ending = $reservation['endingDate'];
             
-     $checkAvailability = $bdd->prepare("SELECT DISTINCT * FROM reservation
-     LEFT JOIN establishment  on reservation.establishment_id = establishment.id
-    LEFT JOIN suite  on reservation.suite_id  = suite.suite_id
-     WHERE reservation.suite_id = '$new_reservation_suite'
-     AND endingDate BETWEEN '$beginning' AND '$ending'
-     AND beginningDate BETWEEN '$beginning' AND '$ending'
+     $checkAvailability = $bdd->prepare("SELECT COUNT(*) FROM reservation
 
+    inner join suite on reservation.suite_id = suite.suite_id
+    and '$new_reservation_beginning' < endingDate
+    and '$new_reservation_ending' > beginningDate
+    where reservation.suite_id = '$new_reservation_suite'
      ");
+
+     var_dump($checkAvailability);
      $checkAvailability->execute();
      
      
-        if($checkAvailability->rowCount() == 0){
+        if($checkAvailability->fetchColumn() == 0)
+        {
+        
         $insertReservationOnWebsite = $bdd->prepare('INSERT INTO reservation
         (establishment_id, 
         suite_id, 
         customer_id, 
         beginningDate,
         endingDate
-        ) VALUES(?, ?, ?, ?, ?)');
+        ) VALUES(?, ?, ?, ?, ?)
+        
+        ');
+
         $insertReservationOnWebsite->execute(
             array(
              $new_reservation_establishment,
@@ -56,9 +54,9 @@ if(isset($_POST['valider'])){
             )
             );
 
-            
-            header('Location: myReservation.php');
             $successMsg = "Votre reservation a bien été ajoutée ";
+            header('Location: myReservation.php');
+
         }else{
             $errorMsg = "Cette suite n'est pas disponible à cette date";
             

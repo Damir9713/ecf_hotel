@@ -3,13 +3,7 @@ session_start();
 require('action/securityManager.php');
 require('action/suite/addSuiteAction.php');
 require 'vendor/autoload.php';
-
-
 require('action/database.php');
-
-//Valider le formulaire
-
- 
     ?>
 
 
