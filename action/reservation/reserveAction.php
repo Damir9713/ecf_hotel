@@ -5,6 +5,7 @@ require('action/database.php');
 
 //Valider le formulaire
 if(isset($_POST['valider'])){
+
     //Vérifier si les champs ne sont pas vides
     if(!empty($_POST['establishment']) 
     AND !empty($_POST['suite']) 
@@ -12,11 +13,13 @@ if(isset($_POST['valider'])){
     AND !empty($_POST['ending']) 
      )
     {
-        $new_reservation_establishment = htmlspecialchars($_POST['establishment']);
-        $new_reservation_suite = htmlspecialchars($_POST['suite']);
-        $new_reservation_customer = $_SESSION['id_customer'];
-        $new_reservation_beginning = htmlspecialchars($_POST['beginning']);
-        $new_reservation_ending = htmlspecialchars($_POST['ending']);
+       
+$new_reservation_establishment = htmlspecialchars($_POST['establishment']);
+$new_reservation_suite = htmlspecialchars($_POST['suite']);
+$new_reservation_customer = $_SESSION['id_customer'];
+$new_reservation_beginning = htmlspecialchars($_POST['beginning']);
+$new_reservation_ending = htmlspecialchars($_POST['ending']);
+
 
             
      $checkAvailability = $bdd->prepare("SELECT COUNT(*) FROM reservation
@@ -27,7 +30,7 @@ if(isset($_POST['valider'])){
     where reservation.suite_id = '$new_reservation_suite'
      ");
 
-     var_dump($checkAvailability);
+
      $checkAvailability->execute();
      
      

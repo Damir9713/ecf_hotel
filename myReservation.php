@@ -55,12 +55,6 @@ require('action/reservation/showMyReservation.php');
 </div>
 </div>
 
-
-<!-- style="width: 18rem;" -->
-
-<!-- width="400" height="150" -->
-
-
 <?php
 }
 ?>
