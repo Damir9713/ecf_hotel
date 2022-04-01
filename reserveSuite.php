@@ -100,6 +100,8 @@ require('action/reservation/reserveAction.php');
 </div>
 
 <script src="src/ajax.js" type='text/javascript'>
+
+    
      
     </script>
     

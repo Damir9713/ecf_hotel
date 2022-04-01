@@ -28,7 +28,7 @@ $(document).ready(function () {
         },
       });
     } else {
-      alert("Please Select Date");
+      alert("Choisissez une date et une suite d'abord");
     }
   });
 });
