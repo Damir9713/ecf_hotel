@@ -108,7 +108,7 @@ if(isset($_POST['validate'])){
         }
     //Vérifier si l'user a bien complété tous les champs
 }else{
-    $errorMsg = "Vous n'avez pas validé le captcha";
+    $errorMsg = "La vérification automatique du captcha a expiré et n'as pas été validé";
 }
 
 }

@@ -74,7 +74,7 @@ if(isset($_POST['validate'])){
         $errorMsg = "Veuillez compléter tous les champs...";
     }
     }else {
-        $errorMsg = "Vous n'avez pas validé le captcha";
+        $errorMsg = "La vérification automatique du captcha a expiré et n'as pas été validé";
     }
     
 
