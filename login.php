@@ -12,12 +12,18 @@ require('action/loginAction.php');
 
 <br><br>
 
-<form class="container" method="POST">
+<form class="container" method="POST" action="verify.php">
 
         <?php if(isset($errorMsg)){ echo '<p>'.$errorMsg.'</p>'; }
             
         ?>
         
+        <?php
+          require_once('recaptchalib.php');
+          $publickey = "6Le8qDkfAAAAANahmpg14Gar67pxHD7xHmFcg-t_"; // you got this from the signup page
+          echo recaptcha_get_html($publickey);
+        ?>
+
          
 
         <div class="mb-3">
