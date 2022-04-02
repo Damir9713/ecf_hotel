@@ -37,8 +37,6 @@ require('action/establishment/showEstablishment.php')
   ?>
  <div class="col-lg-4 mb-3">
 
- <!-- style="width: 18rem;" -->
- <!-- width="400" height="150" -->
 
  <div class="card mx-auto h-100 " >
   <img src="https://hypnosbucket.s3.eu-west-3.amazonaws.com/<?php echo $establishment['photo'] ?>"  class="card-img-top" alt="...">

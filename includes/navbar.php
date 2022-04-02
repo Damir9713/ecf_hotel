@@ -20,7 +20,9 @@
         <li class="nav-item ">
           <a class="nav-link text-decoration-none" href="managerAdmin.php">Les gérants</a>
         </li>
-        
+        <li class="nav-item ">
+          <a class="nav-link text-decoration-none" href="showMessage.php">Messages</a>
+        </li>
     <?php        
     } 
     elseif(isset($_SESSION['id_manager'])){
@@ -74,9 +76,13 @@ else
           <a class="nav-link" href="signupCustomer.php">S'inscrire</a>
          </li>
     
-  <li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link" href="login.php">Se connecter </a>
-              </li>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="sendMessage.php">Contactez-nous</a>
+        </li>
         
 
 <?php  
