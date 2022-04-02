@@ -53,6 +53,10 @@
           <a class="nav-link text-decoration-none" href="myReservation.php">Voir mes réservations</a>
         </li>
 
+        <li class="nav-item">
+          <a class="nav-link" href="sendMessage.php">Envoyer un message</a>
+        </li>
+
         <li class="nav-item ">
           <a class="nav-link text-decoration-none" href="logout.php">Déconnexion</a>
         </li>
