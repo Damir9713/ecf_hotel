@@ -29,11 +29,28 @@
             <label for="exampleInputPassword1" class="form-label">Password</label>
             <input type="password" class="form-control" name="password">
             <br><br>
+            <input type="hidden" name="token_generate" id="token_generate">
             <button type="submit" class="btn btn-outline-warning" name="validate">S'inscrire</button>
-            
         </div>
         
    </form>
 
+
+ 
+
 </body>
+
+<script src="https://www.google.com/recaptcha/api.js?render=6LfhPjsfAAAAAMEaWi6NUqqfg4ae50pXhsfE2lJY"></script>
+
+<script>
+      
+        grecaptcha.ready(function() {
+          grecaptcha.execute('6LfhPjsfAAAAAMEaWi6NUqqfg4ae50pXhsfE2lJY', {action: 'submit'}).then(function(token) {
+              // Add your logic to submit to your backend server here.
+          let response = document.getElementById('token_generate')
+          response.value = token;
+            });
+        });
+      
+  </script>
 </html>

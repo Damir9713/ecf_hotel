@@ -5,7 +5,18 @@ require('action/database.php');
 //Validation du formulaire
 if(isset($_POST['validate'])){
 
-    //Vérifier si l'user a bien complété tous les champs
+    $url = 'https://www.google.com/recaptcha/api/siteverify';
+    $secret = '6LfhPjsfAAAAAOpQa_v5lzz3TghtPyNhjZSZKeio';
+    $response = htmlspecialchars($_POST['token_generate']);
+    $remoteip = $_SERVER['REMOTE_ADDR'];
+
+    $request = file_get_contents($url.'?secret='.$secret.'&response='.$response);
+    $result = json_decode($request, true);
+
+
+    if($result['success']){
+      
+        //Vérifier si l'user a bien complété tous les champs
     if( !empty($_POST['lastname']) 
     AND !empty($_POST['firstname']) 
     AND !empty($_POST['email']) 
@@ -62,5 +73,9 @@ if(isset($_POST['validate'])){
     }else{
         $errorMsg = "Veuillez compléter tous les champs...";
     }
+    }else {
+        $errorMsg = "Vous n'avez pas validé le captcha";
+    }
+    
 
 }
