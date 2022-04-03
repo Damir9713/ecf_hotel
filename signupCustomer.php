@@ -38,7 +38,7 @@
 
  
 
-</body>
+
 
 <script src="https://www.google.com/recaptcha/api.js?render=6LfhPjsfAAAAAMEaWi6NUqqfg4ae50pXhsfE2lJY"></script>
 
@@ -53,4 +53,5 @@
         });
       
   </script>
+  </body>
 </html>

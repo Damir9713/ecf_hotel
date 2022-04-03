@@ -15,8 +15,6 @@ if(!empty($_POST["id"])){
             echo '<option value="'.$row['suite_id'].'">'.$row['Title'].'</option>'; 
         } 
     }
-
-   
 }
 
 if(isset($_POST["debut"], $_POST["fin"], $_POST["suite_id"])) {

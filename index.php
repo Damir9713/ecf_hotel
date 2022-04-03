@@ -36,8 +36,6 @@ require('action/establishment/showEstablishment.php')
 
 <div class="container-fluid">
 
-
-
 <div class="row">
 
 
@@ -55,11 +53,6 @@ require('action/establishment/showEstablishment.php')
  </div>
 </div>
 </div>
-
-
-<!-- style="width: 18rem;" -->
-
-<!-- width="400" height="150" -->
 
 
 <?php

@@ -23,7 +23,7 @@ if(isset($_POST['valider'])){
         $new_manager_establishment = htmlspecialchars($_POST['establishment']);
         
         
-        //Modifier les informations de la mission qui possède l'id rentré en paramètre dans l'URL
+        //Modifier les informations 
         $editManagerOnWebsite = $bdd->prepare('UPDATE manager SET firstname = ?, 
         lastname = ?, 
         email = ?, 
@@ -38,7 +38,7 @@ if(isset($_POST['valider'])){
         $new_manager_establishment,  
         $idOfManager));
 
-        //Redirection vers la page d'affichage des missions 
+        //Redirection 
         header('Location: managerAdmin.php');
         
     }else{

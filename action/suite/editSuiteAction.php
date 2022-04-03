@@ -83,8 +83,7 @@ if(isset($_POST['valider'])){
           );
 
           $successMsg = "Votre suite a bien été ajoutée ";
-          header('Location: suiteManager.php');
-    //    exit("Un des fichier n'est pas une image, ou rajouter une image ou veuillez remplir tout les champs");     
+          header('Location: suiteManager.php'); 
             }else{
                 $errorMsg = "Veuillez mettre une image au bon format";
             }

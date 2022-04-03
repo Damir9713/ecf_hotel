@@ -12,7 +12,9 @@ require 'vendor/autoload.php';
 <?php include 'includes/navbar.php'; ?>
 <br><br>
 <div class="container">
-<?php 
+
+        
+        <?php 
             if(isset($errorMsg)){ 
                 echo '<p>'.$errorMsg.'</p>'; 
             }elseif(isset($successMsg)){ 
@@ -22,18 +24,21 @@ require 'vendor/autoload.php';
 
 
 <form  method="post" enctype="multipart/form-data">
-      <div class="mb-3">
+            <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Nom</label>
                 <input type="text" class="form-control" name="name">
             </div>
+
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">ville</label>
                 <input type="text" class="form-control" name="city" >
             </div>
+
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">adress</label>
                 <input type="text" class="form-control" name="adress" >
             </div>
+
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">description</label>
                 <textarea class="form-control" name="description"></textarea>
@@ -41,18 +46,12 @@ require 'vendor/autoload.php';
             
             <div class="mb-3">
               <input type="file" name="images">
-              
             </div>
-      
             <button type="submit" class="btn btn-outline-warning" name="valider">Ajouter un établissement</button>
-            </div>
-
-            
-    </form>
+</form>
 
 
     </div>
-
 
 <?php include('includes/footer.php') ?>
 </body>

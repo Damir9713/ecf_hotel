@@ -56,7 +56,7 @@ if(isset($_POST['valider'])){
       $new_suite_manager = $_SESSION['id_manager'];  
     
 
-              //Insérer le manager sur la bdd
+              //Insérer la suite dans la bdd
         $insertManagerOnWebsite = $bdd->prepare('INSERT INTO suite(Title, 
         Price, 
         description, 

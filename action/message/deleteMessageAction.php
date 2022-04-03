@@ -30,7 +30,7 @@ if(isset($_GET['id']) AND !empty($_GET['id'])){
             $deleteThisMessage = $bdd->prepare('DELETE FROM contactmessage WHERE id = ?');
             $deleteThisMessage->execute(array($idOfTheMessage));
 
-            //Rediriger l'utilisateur vers ses questions
+            //Rediriger l'utilisateur
             header('Location: ../../showMessage.php');
 
         }else{

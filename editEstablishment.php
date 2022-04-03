@@ -15,16 +15,15 @@ require 'vendor/autoload.php';
 
     <br><br>
     <div class="container">
-        <?php if(isset($errorMsg)){ echo '<p>'.$errorMsg.'</p>';} 
 
-
-
+        <?php 
+        if(isset($errorMsg)){ echo '<p>'.$errorMsg.'</p>';} 
         ?>
         <?php 
             if(isset($_SESSION['id_admin'])){ 
-                ?>
-                <form   class="container" method="post" enctype="multipart/form-data">
-      <div class="mb-3">
+        ?>
+        <form   class="container" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Nom</label>
                 <input type="text" class="form-control" name="name" value="<?= $establishment_name; ?>">
             </div>
@@ -49,15 +48,14 @@ require 'vendor/autoload.php';
             <button type="submit" class="btn btn-outline-warning" name="valider">Modifier l'établissement</button>
                  
                     <br><br>
-            </form>
-            
-                
+        </form>
+    
                 <?php
             }
         ?>
 
                   
-        </div>
+    </div>
 </body>
 </html>
 

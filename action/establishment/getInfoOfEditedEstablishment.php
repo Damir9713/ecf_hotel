@@ -10,8 +10,6 @@ if(isset($_GET['id']) AND !empty($_GET['id'])){
     //Vérifier si la cible existe
     $getEstablishmentInfo = $bdd->prepare('SELECT DISTINCT * FROM establishment
     
-    
-    
     WHERE id = ?');
     $getEstablishmentInfo->execute(array($idOfEstablishment));
 
@@ -28,11 +26,6 @@ if(isset($_GET['id']) AND !empty($_GET['id'])){
 
             $establishment_description = str_replace('<br />', '', $establishment_description);
             
-          
-
-            
-           
-
         }else{
             $errorMsg = "Vous ne pouvez pas modifier cette cible";
         }

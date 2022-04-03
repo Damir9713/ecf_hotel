@@ -2,8 +2,6 @@
 
 require('action/database.php');
 
-
-
 //Vérifier si l'id de la cible est bien passé en paramètre dans l'URL
 if(isset($_GET['suite_id']) AND !empty($_GET['suite_id'])){
 
@@ -27,8 +25,6 @@ if(isset($_GET['suite_id']) AND !empty($_GET['suite_id'])){
 
             $suite_description = str_replace('<br />', '', $suite_description);
             
-           
-
         }else{
             $errorMsg = "Vous ne pouvez pas modifier cette suite ";
         }

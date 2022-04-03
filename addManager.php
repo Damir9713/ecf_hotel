@@ -20,21 +20,23 @@ require('action/manager/addManagerAction.php')
         ?>
 </div>
 
-
-
 <form  class="container" method="post">
-      <div class="mb-3">
+
+            <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Nom</label>
                 <input type="text" class="form-control" name="firstname">
             </div>
+
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">prénom</label>
                 <input type="text" class="form-control" name="lastname" >
             </div>
+
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">email</label>
                 <input type="email" class="form-control" name="email" >
             </div>
+
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">password</label>
                 <input type="password" class="form-control" name="password" >
@@ -42,7 +44,6 @@ require('action/manager/addManagerAction.php')
             
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Etablissement</label>
-                
                 <select type="text" class="form-control" name="establishment" > 
 
                     <?php 
@@ -52,14 +53,12 @@ require('action/manager/addManagerAction.php')
                     <?php
                         }
                     ?>
-                </select>
-                        
+                </select>        
             </div>
-           
-      
+
             <button type="submit" class="btn btn-outline-warning" name="valider">Ajouter un gérant</button>
-            </div>
-    </form>
+            
+</form>
 
 
 

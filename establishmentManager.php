@@ -19,7 +19,6 @@ require('action/suite/showManagerEstablishment.php')
 } ?>
 
 
-
 </div>
 <br><br>
 

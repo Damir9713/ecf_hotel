@@ -30,7 +30,7 @@ if(isset($_GET['manager_id']) AND !empty($_GET['manager_id'])){
             $deleteThisManager = $bdd->prepare('DELETE FROM manager WHERE manager_id = ?');
             $deleteThisManager->execute(array($idOfTheManager));
 
-            //Rediriger l'utilisateur vers ses questions
+            //Rediriger l'utilisateur 
             header('Location: ../../managerAdmin.php');
 
         }else{

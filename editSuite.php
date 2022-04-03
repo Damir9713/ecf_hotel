@@ -7,16 +7,10 @@ require 'vendor/autoload.php';
 
 ?>
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
-<?php include 'includes/head.php'; ?>
+    <?php include 'includes/head.php'; ?>
 <body>
-
-
-
 
     <?php include 'includes/navbar.php'; ?>
 
@@ -27,8 +21,8 @@ require 'vendor/autoload.php';
         <?php 
             if(isset($_SESSION['id_manager'])){ 
                 ?>
-                <form class="container"  method="post" enctype="multipart/form-data" >
-      <div class="mb-3">
+    <form class="container"  method="post" enctype="multipart/form-data" >
+            <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Titre</label>
                 <input type="text" class="form-control" name="title" value="<?= $suite_Title; ?>">
             </div>
@@ -44,16 +38,13 @@ require 'vendor/autoload.php';
             <div class="mb-3">
               <input type="file" name="firstphoto">
             </div>
-                    <button type="submit" class="btn btn-outline-warning" name="valider">Modifier la suite</button>
-                    <br><br>
-                </form>
+            <button type="submit" class="btn btn-outline-warning" name="valider">Modifier la suite</button>
+            <br><br>
+    </form>
 
-
-                
-                
                 <?php
-            }
-        ?>
-       
-      
-        <div>
+                }
+                ?>
+    <div>
+</body>
+</html>

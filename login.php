@@ -14,8 +14,8 @@ require('action/loginAction.php');
 
 <form class="container" method="POST">
 
-        <?php if(isset($errorMsg)){ echo '<p>'.$errorMsg.'</p>'; }
-            
+        <?php 
+        if(isset($errorMsg)){ echo '<p>'.$errorMsg.'</p>'; }   
         ?>
          
 
@@ -31,9 +31,7 @@ require('action/loginAction.php');
         <button type="submit" class="btn btn-outline-warning" name="validate">Se connecter</button>
         <br><br>
         
-    </form>
-
-
+</form>
 
 </body>
 

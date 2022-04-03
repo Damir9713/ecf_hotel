@@ -30,7 +30,7 @@ if(isset($_GET['suite_id']) AND !empty($_GET['suite_id'])){
             $deleteThisSuite = $bdd->prepare('DELETE FROM suite WHERE suite_id = ?');
             $deleteThisSuite->execute(array($idOfTheSuite));
 
-            //Rediriger l'utilisateur vers ses questions
+            //Rediriger l'utilisateur
             header('Location: ../../suiteManager.php');
 
         }else{

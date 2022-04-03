@@ -30,7 +30,7 @@ if(isset($_GET['id']) AND !empty($_GET['id'])){
             $deleteThisEstablishment = $bdd->prepare('DELETE FROM establishment WHERE id = ?');
             $deleteThisEstablishment->execute(array($idOfTheEstablishment));
 
-            //Rediriger l'utilisateur vers ses questions
+            //Rediriger l'utilisateur
             header('Location: ../../establishmentAdmin.php');
 
         }else{

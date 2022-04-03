@@ -63,19 +63,13 @@ require('action/suite/showSuite.php')
   </div>
 
   </div>
-  
  
-
 <?php
 }
 ?>
 
-
-
 </div>
 </div>
-
-
 
 <?php include('includes/footer.php') ?>
 </body>

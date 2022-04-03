@@ -4,8 +4,7 @@ require('action/securityManager.php');
 require('action/suite/addSuiteAction.php');
 require 'vendor/autoload.php';
 require('action/database.php');
-    ?>
-
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,8 +25,8 @@ require('action/database.php');
 
 <div class="container">
 
-<form    method="post" enctype="multipart/form-data">
-      <div class="mb-3">
+    <form method="post" enctype="multipart/form-data">
+            <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Titre</label>
                 <input type="text" class="form-control" name="title">
             </div>
@@ -44,12 +43,8 @@ require('action/database.php');
               <input type="file" name="firstphoto">
             </div>
             <button type="submit" class="btn btn-outline-warning" name="valider">Ajouter une suite</button>
-            </div>
-
-
+            
     </form>
-
-   
-
 </div>
-
+</body>
+</html>

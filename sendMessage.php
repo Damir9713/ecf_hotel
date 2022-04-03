@@ -54,3 +54,5 @@ require('action/message/sendMessageAction.php');
         
         
     </form>
+</body>
+</html>

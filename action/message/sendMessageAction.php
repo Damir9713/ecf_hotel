@@ -2,12 +2,7 @@
 
 require("action/database.php");
 
-
-
 if(isset($_POST['valider'])){
-
- 
-
 
   if(!empty($_POST['firstname'])
     AND !empty($_POST['lastname']) 

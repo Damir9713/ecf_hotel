@@ -29,9 +29,7 @@ require('action/reservation/reserveAction.php');
             
             <div class="mb-3">
                 <label  class="form-label">Etablissement</label>
-                
                 <select type="text" class="form-control" id="establishment" name="establishment" > 
-
                 <option value="" selected>Sélectionner un établissement</option>
 
                     <?php 
@@ -42,15 +40,15 @@ require('action/reservation/reserveAction.php');
                         }
                     ?>
                 </select>
-                    </div>
+            </div>
 
                     <div class="mb-3">
 
-                    <label  class="form-label">Suite</label>
-                    <select type="text"  id="suite" class="form-control" name="suite" > 
+                        <label  class="form-label">Suite</label>
+                        <select type="text"  id="suite" class="form-control" name="suite" > 
 
-                    <option value="">Sélectionner d'abord l'établissement</option>
-                    </select>
+                        <option value="">Sélectionner d'abord l'établissement</option>
+                        </select>
                         
                     </div>
              
@@ -87,8 +85,6 @@ require('action/reservation/reserveAction.php');
                 </div>
                 </div>
 
-            
-           
             <button type="submit" class="btn btn-outline-warning" name="valider">Valider réservation</button>           
             
         
@@ -100,10 +96,7 @@ require('action/reservation/reserveAction.php');
 </div>
 
 <script src="src/ajax.js" type='text/javascript'>
-
-    
-     
-    </script>
+</script>
     
 </body>
 

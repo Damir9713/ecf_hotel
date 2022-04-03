@@ -6,9 +6,6 @@ require 'vendor/autoload.php';
 
 if(isset($_POST['valider'])){
 
- 
-
-
   if(!empty($_POST['name'])
     AND !empty($_POST['city']) 
     AND !empty($_POST['adress'])  
@@ -20,8 +17,6 @@ if(isset($_POST['valider'])){
     $city = htmlspecialchars($_POST['city']);
     $adress = htmlspecialchars($_POST['adress']);
 
-    
-  
     // $extensions = ['png', 'jpg', 'gif', 'jpeg'];
     $type = ['image/png', 'image/jpg', 'image/jpeg', 'image/gif'];
     $photo = $_FILES['images']['name'];

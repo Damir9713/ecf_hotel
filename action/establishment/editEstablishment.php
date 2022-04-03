@@ -76,8 +76,6 @@ $insertImage->execute(
       $errorMsg = "Veuillez mettre une image au bon format";
     }
 
-   
-  
 }else{
   $errorMsg = "Veuillez remplir tout les champs";
 }

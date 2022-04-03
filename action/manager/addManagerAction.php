@@ -6,8 +6,6 @@ require('action/database.php');
 // récupérer info pour liste déroulante
 $establishment_list = $bdd->query('SELECT * from establishment order by id');
 
-
-
 //Valider le formulaire
 if(isset($_POST['valider'])){
 
@@ -33,7 +31,7 @@ if(isset($_POST['valider'])){
         
         if($checkIfManagerAlreadyExists->rowCount() == 0) {
 
-              //Insérer le manager sur la bdd
+        //Insérer le manager sur la bdd
         $insertManagerOnWebsite = $bdd->prepare('INSERT INTO manager(firstname, 
         lastname, 
         email, 

@@ -85,8 +85,8 @@ require('action/reservation/quickReserveAction.php')
            
       
             <button type="submit" class="btn btn-outline-warning" name="valider">Valider réservation</button>
-            </div>
-    </form>
+            
+</form>
 
 
 <script src="src/ajax.js" type='text/javascript'>

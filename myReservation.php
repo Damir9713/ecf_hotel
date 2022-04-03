@@ -16,18 +16,16 @@ require('action/reservation/showMyReservation.php');
 
 <div class="container-fluid">
 
-<?php 
+        <?php 
             if(isset($successMsg)){ 
                 echo '<p>'.$successMsg.'</p>'; 
             }
-
-            
         ?>
 
 <?php if(isset($_SESSION['id_customer'])){
   echo '<h1>'.'Bonjour '.$_SESSION['firstname_customer'].'</h1>';
-  
-} ?>
+} 
+?>
 
 </div>
 

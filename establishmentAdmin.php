@@ -23,7 +23,6 @@ require('action/establishment/showEstablishment.php')
         </div>
 </div>
 
-
 </div>
 
 <br><br>

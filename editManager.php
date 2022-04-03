@@ -6,9 +6,6 @@ require('action/manager/editManagerAction.php');
 
 ?>
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <?php include 'includes/head.php'; ?>
@@ -17,13 +14,16 @@ require('action/manager/editManagerAction.php');
 
     <br><br>
     <div class="container">
+
         <?php if(isset($errorMsg)){ echo '<p>'.$errorMsg.'</p>'; } ?>
         
-        <?php 
-            if(isset($_SESSION['id_admin'])){ 
-                ?>
-                <form class="container" method="post" >
-      <div class="mb-3">
+        <?php  
+        if(isset($_SESSION['id_admin']))
+        { 
+        ?>
+
+        <form class="container" method="post" >
+            <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Nom</label>
                 <input type="text" class="form-control" name="firstname" value="<?= $manager_firstname; ?>">
             </div>
@@ -41,37 +41,30 @@ require('action/manager/editManagerAction.php');
             </div>
             
             <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Spécialité ID</label>
-                        <select type="text" class="form-control" name="establishment">
-                                    
-                                                        
-                                <?php while($establishment = $establishment_list->fetch())
-                                {
-                                echo '<option ';
-                                if($manager_establishment==$establishment['id'])
-                                {
-                                echo 'selected="selected" ';
-                                }
-                                echo 'value="'.$establishment['id'].'">'.$establishment['name'].'</option>' ;
-                                } ?>
-                                </select>
-                        
-                    </div>
+                <label for="exampleInputEmail1" class="form-label">Etablissement</label>
+                <select type="text" class="form-control" name="establishment">                     
+                        <?php while($establishment = $establishment_list->fetch())
+                        {
+                        echo '<option ';
+                        if($manager_establishment==$establishment['id'])
+                        {
+                        echo 'selected="selected" ';
+                        }
+                        echo 'value="'.$establishment['id'].'">'.$establishment['name'].'</option>' ;
+                        } ?>
+                </select>
+                
+            </div>
        
-                    <button type="submit" class="btn btn-outline-warning" name="valider">Modifier le manager</button>
-                    <br><br>
-                </form>
+            <button type="submit" class="btn btn-outline-warning" name="valider">Modifier le manager</button>
+            <br><br>
+        </form>
                 
                 <?php
-            }
-        ?>
-        
+                }
+                ?>
 
-
-        
-                        
     </div>
-    
 
 </body>
 </html>
